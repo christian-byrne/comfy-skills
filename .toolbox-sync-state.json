@@ -18,10 +18,12 @@
   },
   "apple": {
     "hash": "66d99cff18a9aed9770efb8ee0d409d139adf8d2a99d01943cdf8104028adca1",
+    "listing_url": "/t/apple",
     "path": "skills/apple"
   },
   "applying-rl": {
     "hash": "0b5e789aebb29f91079afce8b51a4917758e6ea17aae00b182f6c5f4692f6a64",
+    "listing_url": "/t/applying-rl",
     "path": "skills/rl/sub-skills/applying-rl"
   },
   "architecture-decision-records": {
@@ -65,6 +67,7 @@
   },
   "brainstorming": {
     "hash": "ea66f684d724c8ff9a749744f2f142434f3032a6ade6663b487450534a01a28f",
+    "listing_url": "/t/brainstorming",
     "path": "skills/brainstorming"
   },
   "changelog-generator": {
@@ -157,6 +160,7 @@
   },
   "excalidraw": {
     "hash": "62fc2be8f1f1cf09bdaa0bda7441c7e43c1159497783788dcbd6130031964a09",
+    "listing_url": "/t/excalidraw",
     "path": "skills/excalidraw"
   },
   "final-sweep": {
@@ -175,14 +179,17 @@
   },
   "gif-search": {
     "hash": "236a759aeb958205ab6e7ae8b8d12ed86e47c5a2f721aa02e60909fcf2785792",
+    "listing_url": "/t/gif-search",
     "path": "skills/gif-search"
   },
   "grill-me": {
     "hash": "37ba0cc77ee96a8ca9440b5233ac179fe76213d88fd2fca121dbbee6e60403a5",
+    "listing_url": "/t/grill-me",
     "path": "skills/grill-me"
   },
   "gws": {
     "hash": "1c12e551ac64367b163f6ca09bc460bc3b349ee3c48f8f88ca9a7664ef73c7c0",
+    "listing_url": "/t/gws",
     "path": "skills/gws"
   },
   "hit-area": {
@@ -215,6 +222,7 @@
   },
   "ocr-and-documents": {
     "hash": "1c55ca5e6803fa5a7dba8b1d55d2beb22263930e51ec3fea3cf6494ccf8afd19",
+    "listing_url": "/t/ocr-and-documents",
     "path": "skills/ocr-and-documents"
   },
   "offer-creation": {
@@ -238,6 +246,7 @@
   },
   "post-meeting-analysis": {
     "hash": "3e9c99342c0fd63349940fe6ec5d7a36737e284788438c0cea5b05217cb8af43",
+    "listing_url": "/t/post-meeting-analysis",
     "path": "skills/post-meeting-analysis"
   },
   "postmortem-writing": {
@@ -247,6 +256,7 @@
   },
   "powerpoint": {
     "hash": "e17608df3fc4e7ca7e5a2c5c4e951f8105b6cf96f9689f944fd7b305eaa26059",
+    "listing_url": "/t/powerpoint",
     "path": "skills/powerpoint"
   },
   "pr-backlog-sweep": {
@@ -298,6 +308,7 @@
   },
   "reviving-stale-prs": {
     "hash": "597f78189202591b77d80a31bc5f7f2ee8888d603ab69f68a0b4b676c4a5e023",
+    "listing_url": "/t/reviving-stale-prs",
     "path": "skills/reviving-stale-prs"
   },
   "sales-enablement": {
@@ -314,6 +325,7 @@
   },
   "skill-from-trial-run": {
     "hash": "b56234ff9490f646c0b8e49baaf0536624e91ca451c5aa8e2e14fbe388788bbd",
+    "listing_url": "/t/skill-from-trial-run",
     "path": "skills/skill-from-trial-run"
   },
   "social-content": {
@@ -322,22 +334,27 @@
   },
   "spec-driven-development": {
     "hash": "353690f670945d1aab62d237b9b0611a01238cb0c1530b3a54df4449bf9d2ced",
+    "listing_url": "/t/spec-driven-development",
     "path": "skills/spec-driven-development"
   },
   "systematic-debugging": {
     "hash": "099ee2264018662bae3331690fcffd752c27cff72596beef30e539d282b0bf9f",
+    "listing_url": "/t/systematic-debugging",
     "path": "skills/systematic-debugging"
   },
   "task-decomposition": {
     "hash": "f547fb52e18a3832d37da645e4c30fb1202713e871aa793880c48e6ee4b95ac6",
+    "listing_url": "/t/task-decomposition",
     "path": "skills/task-decomposition"
   },
   "test-driven-development": {
     "hash": "be85a10f961189fdbd083fb2c24f2d923ece8c563ef3c24423e5e14ecc6af7f6",
+    "listing_url": "/t/test-driven-development",
     "path": "skills/test-driven-development"
   },
   "test-mock-quality-analysis": {
     "hash": "de5026355dc4b4ee9b8740b58ea9af57970e9fd16da3ddf396288863b0286690",
+    "listing_url": "/t/test-mock-quality-analysis",
     "path": "skills/test-mock-quality-analysis"
   },
   "twitter": {
@@ -346,14 +363,17 @@
   },
   "vue-best-practices": {
     "hash": "173b92c91408dfa49217f1fe1f2cc9be2fd64aba85fab354d29dcc2757b6765c",
+    "listing_url": "/t/vue-best-practices",
     "path": "skills/vue-best-practices"
   },
   "vue-debug-guides": {
     "hash": "49cec2422661a8c528ebbba5e0f8c35ea226eef7e74013ded31657d2b791a5b6",
+    "listing_url": "/t/vue-debug-guides",
     "path": "skills/vue-debug-guides"
   },
   "vue-pinia-best-practices": {
     "hash": "91fa2b42a6a27f41fefd5609479565ef93904493ecaee4015188020d2ae190e5",
+    "listing_url": "/t/vue-pinia-best-practices",
     "path": "skills/vue-pinia-best-practices"
   },
   "writing-playwright-tests": {
