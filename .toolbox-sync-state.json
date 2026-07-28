@@ -5,6 +5,7 @@
   },
   "agent-browser": {
     "hash": "2c31e4281d87fcee9d8352f6dc55a300306bc9429c928f762d211818f9231b26",
+    "listing_url": "https://tools.comfy.org/t/agent-browser",
     "path": "skills/agent-browser"
   },
   "ai-seo": {
@@ -25,22 +26,27 @@
   },
   "architecture-decision-records": {
     "hash": "acaef184c62c14b9696f3ac4d5b65fc71b7db70b12de1de833680d517536077a",
+    "listing_url": "https://tools.comfy.org/t/architecture-decision-records",
     "path": "skills/architecture-decision-records"
   },
   "architecture-diagram": {
     "hash": "2340056e3154d11ecb3405101d34d9057fa9d2f5a331ba3d669bcc3011bd9084",
+    "listing_url": "https://tools.comfy.org/t/architecture-diagram",
     "path": "skills/architecture-diagram"
   },
   "ascii-video": {
     "hash": "8ae1fd07a382f23c060db4619580919a144d9452ab1509925f1a770926c9b4f4",
+    "listing_url": "https://tools.comfy.org/t/ascii-video",
     "path": "skills/ascii-video"
   },
   "autoagent": {
     "hash": "4c10fe4a2dac709a0c55de2bfb6154bdc5e059433ed42e3154fbf9a204bccfca",
+    "listing_url": "https://tools.comfy.org/t/autoagent",
     "path": "skills/autoagent"
   },
   "autoresearch": {
     "hash": "8e177bc2cf7251d5b84bd95a4f91d8eb945cef8fd5185899d7ce91e66cc0d660",
+    "listing_url": "https://tools.comfy.org/t/autoresearch",
     "path": "skills/autoresearch"
   },
   "avoid-ai-writing": {
@@ -49,10 +55,12 @@
   },
   "backport-management": {
     "hash": "e95e2f4b95f92433b9227543e0be091b04462fc96374cec9a63ccbf6c9ef02f4",
+    "listing_url": "https://tools.comfy.org/t/backport-management",
     "path": "skills/backport-management"
   },
   "batch-local-checks": {
     "hash": "e7098799b0a47d00e1170a5513d950bada343a69c4c5bd509f793d3c1a050cbd",
+    "listing_url": "https://tools.comfy.org/t/batch-local-checks",
     "path": "skills/batch-local-checks"
   },
   "brainstorming": {
@@ -61,10 +69,12 @@
   },
   "changelog-generator": {
     "hash": "0dfe06e02fefee698da5f046bcca72f712d2d802bb73f9114090e49d4d21e486",
+    "listing_url": "https://tools.comfy.org/t/changelog-generator",
     "path": "skills/changelog-generator"
   },
   "chrome-devtools": {
     "hash": "fd609c1590876b5e55001b776f20e06798fae1fb8af959a66b6392caac7e8d36",
+    "listing_url": "https://tools.comfy.org/t/chrome-devtools",
     "path": "skills/chrome-devtools"
   },
   "churn-prevention": {
@@ -73,6 +83,7 @@
   },
   "closed-bug-regression-audit": {
     "hash": "0c7d566a9632abcdfaa71f885e6d2e5040c25ea7cac0149a5fab0ec8dc3c967e",
+    "listing_url": "https://tools.comfy.org/t/closed-bug-regression-audit",
     "path": "skills/closed-bug-regression-audit"
   },
   "cold-email": {
@@ -101,14 +112,17 @@
   },
   "core-release": {
     "hash": "fc26d68669802e7e84291046ffba01743d27d6cf85fb36d5edbc09514e8e1859",
+    "listing_url": "https://tools.comfy.org/t/core-release",
     "path": "skills/comfyui/core-release"
   },
   "cost-optimization": {
     "hash": "e91f30ad02b3e383d6dc896c20f7523df1aa76c38ffb1425ba43ad46dd796a2e",
+    "listing_url": "https://tools.comfy.org/t/cost-optimization",
     "path": "skills/cost-optimization"
   },
   "coverage-test-picker": {
     "hash": "cec5833dcaadb779b14dc16ccd96892865b3c9fea00247ff1e1fefd1b3bb687b",
+    "listing_url": "https://tools.comfy.org/t/coverage-test-picker",
     "path": "skills/coverage-test-picker"
   },
   "cross-agent-testing": {
@@ -197,6 +211,7 @@
   },
   "p5js": {
     "hash": "fb2ce05a7fa96a94ed8490147cdeb7fcfb71484488caa0440c3ff896bce5455d",
+    "listing_url": "https://tools.comfy.org/t/p5js",
     "path": "skills/p5js"
   },
   "perf-fix-with-proof": {
@@ -233,6 +248,7 @@
   },
   "project-status-generator": {
     "hash": "439121b4502d4a0e8a3da6c9c80b2f56a1cc8f37814e86b82736a8ec6151e350",
+    "listing_url": "https://tools.comfy.org/t/project-status-generator",
     "path": "skills/project-status-generator"
   },
   "referral-program": {
@@ -241,6 +257,7 @@
   },
   "regenerating-screenshots": {
     "hash": "13be44f5a4bff1beffa71fc12031e197738e57fa77cc77cf0d11a3f2db59809d",
+    "listing_url": "https://tools.comfy.org/t/regenerating-screenshots",
     "path": "skills/comfyui/regenerating-screenshots"
   },
   "regression-risk-reviewer": {
@@ -321,10 +338,12 @@
   },
   "writing-playwright-tests": {
     "hash": "8da4b3c8a07e2360f411bc2a5aac2c79b3be6046b80232718e982fab6d862688",
+    "listing_url": "https://tools.comfy.org/t/writing-playwright-tests",
     "path": "skills/comfyui/writing-playwright-tests"
   },
   "writing-storybook-stories": {
     "hash": "04de8cc9deb41767cbfd9e3ba1040096c91d089853392e1352d9ce8c7d8e4c07",
+    "listing_url": "https://tools.comfy.org/t/writing-storybook-stories",
     "path": "skills/comfyui/writing-storybook-stories"
   }
 }
