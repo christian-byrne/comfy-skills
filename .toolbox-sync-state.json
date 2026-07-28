@@ -156,6 +156,7 @@
   },
   "design-review-board": {
     "hash": "71433a581a04891402494ccd23bb6406569fa489539bc8095056b6d66cedeca4",
+    "listing_url": "/t/design-review-board",
     "path": "skills/design-review-board"
   },
   "draft-review": {
@@ -205,6 +206,7 @@
   },
   "hit-area": {
     "hash": "e463aa926ba2f26de6e64dff6929521d70b64b01154261fe5c2db37c7803314d",
+    "listing_url": "/t/hit-area",
     "path": "skills/hit-area"
   },
   "html-in-canvas": {
@@ -379,6 +381,7 @@
   },
   "twitter": {
     "hash": "88ef232b3a68de16edb4d1e56f109fe7a4b8927961ef82168849f24a7adf2f00",
+    "listing_url": "/t/twitter",
     "path": "skills/twitter"
   },
   "vue-best-practices": {
