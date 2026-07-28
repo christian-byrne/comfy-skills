@@ -92,14 +92,17 @@
   },
   "comfyui-backend": {
     "hash": "5820489753cef98a302922414ee41e628b1a897f18bf41fc4169ef6c59f4c340",
+    "listing_url": "/t/comfyui-backend",
     "path": "skills/repo-knowledge/comfyui-backend"
   },
   "comfyui-docs": {
     "hash": "b10847fb7618746e11f522499437b640dcac752be55bc26af28839db08993d8c",
+    "listing_url": "/t/comfyui-docs",
     "path": "skills/repo-knowledge/comfyui-docs"
   },
   "comfyui-frontend": {
     "hash": "b19e14c9fb40b84d6e1b4ce7e807b5ce2446f2aa1ea9a48532e0c8b9534058ba",
+    "listing_url": "/t/comfyui-frontend",
     "path": "skills/repo-knowledge/comfyui-frontend"
   },
   "content-strategy": {
@@ -127,6 +130,7 @@
   },
   "cross-agent-testing": {
     "hash": "b0fd18adb49a0b0cd477eabc1de1e2092b9568cd816fec90a2db469e29a38985",
+    "listing_url": "/t/cross-agent-testing",
     "path": "skills/cross-agent-testing"
   },
   "customer-research": {
@@ -135,6 +139,7 @@
   },
   "debugging-vue-performance": {
     "hash": "a1298ce78e238e17e2f1b60b07b4b00a8f91292738f873f91d8a96dfaaea6c1a",
+    "listing_url": "/t/debugging-vue-performance",
     "path": "skills/debugging-vue-performance"
   },
   "design-review-board": {
@@ -143,6 +148,7 @@
   },
   "draft-review": {
     "hash": "c75ca42ac3665c3995554e95f62294c29860147098b3a61420ff41f11aaad8df",
+    "listing_url": "/t/draft-review",
     "path": "skills/draft-review"
   },
   "email-sequence": {
@@ -155,10 +161,12 @@
   },
   "final-sweep": {
     "hash": "f28ef231c54140bcdf7855da6aed688a5b769ec87ed9977ee95787080b848737",
+    "listing_url": "/t/final-sweep",
     "path": "skills/final-sweep"
   },
   "flaky-test-fixer": {
     "hash": "a91f7199bf8b0cbe9b494b270689eda04470ed5111a6c515b43d851b83a6fbaa",
+    "listing_url": "/t/flaky-test-fixer",
     "path": "skills/flaky-test-fixer"
   },
   "geo-seo": {
@@ -183,10 +191,12 @@
   },
   "html-in-canvas": {
     "hash": "dac5417febdda76c4edb8fe0c2b689a96266e2ebf077a4b240b12fdaeb950bb9",
+    "listing_url": "/t/html-in-canvas",
     "path": "skills/html-in-canvas"
   },
   "improve-codebase-architecture": {
     "hash": "715c524d6515ca23f338743d493b1f7f372f1f9def2168e1dc2350bebe681846",
+    "listing_url": "/t/improve-codebase-architecture",
     "path": "skills/improve-codebase-architecture"
   },
   "launch-strategy": {
@@ -195,10 +205,12 @@
   },
   "mcp-atlas": {
     "hash": "bf0d5ffe954531be77bfb105efdf672bd742b3d7350ef1ac3445dc14cd088bcf",
+    "listing_url": "/t/mcp-atlas",
     "path": "skills/mcp-atlas"
   },
   "mcporter": {
     "hash": "38b39f57f00add89fdc94b680aa4e348e423ffef1502d2b0d02840f5150d57eb",
+    "listing_url": "/t/mcporter",
     "path": "skills/mcporter"
   },
   "ocr-and-documents": {
@@ -216,10 +228,12 @@
   },
   "perf-fix-with-proof": {
     "hash": "f0570615f501ba7d264820fa5bb91c70d0df36b6fca4abcaa319b1a71f5f15a3",
+    "listing_url": "/t/perf-fix-with-proof",
     "path": "skills/perf-fix-with-proof"
   },
   "plan-audit": {
     "hash": "36047a94e560621f2677f2a9aec5cf038af99f9185e57a3f90dc03f5c675425f",
+    "listing_url": "/t/plan-audit",
     "path": "skills/plan-audit"
   },
   "post-meeting-analysis": {
@@ -228,6 +242,7 @@
   },
   "postmortem-writing": {
     "hash": "e8014266f58522c76ea5299ac408f167c3e8b8ab2d64d61a22633dfd54138b41",
+    "listing_url": "/t/postmortem-writing",
     "path": "skills/postmortem-writing"
   },
   "powerpoint": {
@@ -236,6 +251,7 @@
   },
   "pr-backlog-sweep": {
     "hash": "dc28595070db06d403d77c85120976d732a56108d45c9b887b5eb4b1ade45843",
+    "listing_url": "/t/pr-backlog-sweep",
     "path": "skills/pr-backlog-sweep"
   },
   "pricing-strategy": {
@@ -262,18 +278,22 @@
   },
   "regression-risk-reviewer": {
     "hash": "8cae17ea8604c6d27f10d6a734a9b5215aa6b3748df77532c3772298c4513ac8",
+    "listing_url": "/t/regression-risk-reviewer",
     "path": "skills/regression-risk-reviewer"
   },
   "release-test-plan": {
     "hash": "18a2499c72e26710971495f75fc7d84b684b1d796071c41e12fbe4b4ceedf160",
+    "listing_url": "/t/release-test-plan",
     "path": "skills/release-test-plan"
   },
   "repo-doc-audit": {
     "hash": "0a54445ddcbdda3110bf287980300bef8ca8e2889986e81c8149fbadf54c7a0f",
+    "listing_url": "/t/repo-doc-audit",
     "path": "skills/repo-doc-audit"
   },
   "review-comment-futures": {
     "hash": "7fd4d4b2b025c6781393eb4bbbc8b7aae3b3c7f5e26348ae271eb084472b552f",
+    "listing_url": "/t/review-comment-futures",
     "path": "skills/review-comment-futures"
   },
   "reviving-stale-prs": {
