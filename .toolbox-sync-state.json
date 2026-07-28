@@ -1,0 +1,330 @@
+{
+  "ab-test-setup": {
+    "hash": "7b22664a430d49e5c16bd87055c004b957c238447e6696d0183005cdd211b251",
+    "path": "skills/marketing/sub-skills/ab-test-setup"
+  },
+  "agent-browser": {
+    "hash": "2c31e4281d87fcee9d8352f6dc55a300306bc9429c928f762d211818f9231b26",
+    "path": "skills/agent-browser"
+  },
+  "ai-seo": {
+    "hash": "a90dd6ada037afbcbceebb42f6bfbb9407c1751e65b03c606e7a7a963801ad23",
+    "path": "skills/marketing/sub-skills/ai-seo"
+  },
+  "ai-style-guide": {
+    "hash": "eec03ed57094b94925500d117faeb7acd9206c3becb201f5e540ab4d3079bde5",
+    "path": "skills/ai-style-guide"
+  },
+  "apple": {
+    "hash": "66d99cff18a9aed9770efb8ee0d409d139adf8d2a99d01943cdf8104028adca1",
+    "path": "skills/apple"
+  },
+  "applying-rl": {
+    "hash": "0b5e789aebb29f91079afce8b51a4917758e6ea17aae00b182f6c5f4692f6a64",
+    "path": "skills/rl/sub-skills/applying-rl"
+  },
+  "architecture-decision-records": {
+    "hash": "acaef184c62c14b9696f3ac4d5b65fc71b7db70b12de1de833680d517536077a",
+    "path": "skills/architecture-decision-records"
+  },
+  "architecture-diagram": {
+    "hash": "2340056e3154d11ecb3405101d34d9057fa9d2f5a331ba3d669bcc3011bd9084",
+    "path": "skills/architecture-diagram"
+  },
+  "ascii-video": {
+    "hash": "8ae1fd07a382f23c060db4619580919a144d9452ab1509925f1a770926c9b4f4",
+    "path": "skills/ascii-video"
+  },
+  "autoagent": {
+    "hash": "4c10fe4a2dac709a0c55de2bfb6154bdc5e059433ed42e3154fbf9a204bccfca",
+    "path": "skills/autoagent"
+  },
+  "autoresearch": {
+    "hash": "8e177bc2cf7251d5b84bd95a4f91d8eb945cef8fd5185899d7ce91e66cc0d660",
+    "path": "skills/autoresearch"
+  },
+  "avoid-ai-writing": {
+    "hash": "bafbd39a86b10598d2a76dc0f55f7b290eb348aa5553d91b7a0b0c85d9af9038",
+    "path": "skills/avoid-ai-writing"
+  },
+  "backport-management": {
+    "hash": "e95e2f4b95f92433b9227543e0be091b04462fc96374cec9a63ccbf6c9ef02f4",
+    "path": "skills/backport-management"
+  },
+  "batch-local-checks": {
+    "hash": "e7098799b0a47d00e1170a5513d950bada343a69c4c5bd509f793d3c1a050cbd",
+    "path": "skills/batch-local-checks"
+  },
+  "brainstorming": {
+    "hash": "ea66f684d724c8ff9a749744f2f142434f3032a6ade6663b487450534a01a28f",
+    "path": "skills/brainstorming"
+  },
+  "changelog-generator": {
+    "hash": "0dfe06e02fefee698da5f046bcca72f712d2d802bb73f9114090e49d4d21e486",
+    "path": "skills/changelog-generator"
+  },
+  "chrome-devtools": {
+    "hash": "fd609c1590876b5e55001b776f20e06798fae1fb8af959a66b6392caac7e8d36",
+    "path": "skills/chrome-devtools"
+  },
+  "churn-prevention": {
+    "hash": "af17bd5f7df6e4cbca37391dfcfaf52fa89991dc0280ea8b1a879f4d341ac999",
+    "path": "skills/marketing/sub-skills/churn-prevention"
+  },
+  "closed-bug-regression-audit": {
+    "hash": "0c7d566a9632abcdfaa71f885e6d2e5040c25ea7cac0149a5fab0ec8dc3c967e",
+    "path": "skills/closed-bug-regression-audit"
+  },
+  "cold-email": {
+    "hash": "f6c02b763a60ebee13fe8d2dc22d00bb20d1f282ac34d730470f122c0bb80984",
+    "path": "skills/marketing/sub-skills/cold-email"
+  },
+  "comfyui-backend": {
+    "hash": "5820489753cef98a302922414ee41e628b1a897f18bf41fc4169ef6c59f4c340",
+    "path": "skills/repo-knowledge/comfyui-backend"
+  },
+  "comfyui-docs": {
+    "hash": "b10847fb7618746e11f522499437b640dcac752be55bc26af28839db08993d8c",
+    "path": "skills/repo-knowledge/comfyui-docs"
+  },
+  "comfyui-frontend": {
+    "hash": "b19e14c9fb40b84d6e1b4ce7e807b5ce2446f2aa1ea9a48532e0c8b9534058ba",
+    "path": "skills/repo-knowledge/comfyui-frontend"
+  },
+  "content-strategy": {
+    "hash": "e7e75a091bb918df75fbf18bf13ba546435859d3b5268586b28c568b6aa22d74",
+    "path": "skills/marketing/sub-skills/content-strategy"
+  },
+  "copy-editing": {
+    "hash": "9f83eeb973a862f855934af6d650ca78f41654a29978f378eb3d8ffa4a1a12dd",
+    "path": "skills/marketing/sub-skills/copy-editing"
+  },
+  "core-release": {
+    "hash": "fc26d68669802e7e84291046ffba01743d27d6cf85fb36d5edbc09514e8e1859",
+    "path": "skills/comfyui/core-release"
+  },
+  "cost-optimization": {
+    "hash": "e91f30ad02b3e383d6dc896c20f7523df1aa76c38ffb1425ba43ad46dd796a2e",
+    "path": "skills/cost-optimization"
+  },
+  "coverage-test-picker": {
+    "hash": "cec5833dcaadb779b14dc16ccd96892865b3c9fea00247ff1e1fefd1b3bb687b",
+    "path": "skills/coverage-test-picker"
+  },
+  "cross-agent-testing": {
+    "hash": "b0fd18adb49a0b0cd477eabc1de1e2092b9568cd816fec90a2db469e29a38985",
+    "path": "skills/cross-agent-testing"
+  },
+  "customer-research": {
+    "hash": "766ea368888db25b008d239fa509d9c7f82fde0a5cf30bb1d35236942e285ff5",
+    "path": "skills/marketing/sub-skills/customer-research"
+  },
+  "debugging-vue-performance": {
+    "hash": "a1298ce78e238e17e2f1b60b07b4b00a8f91292738f873f91d8a96dfaaea6c1a",
+    "path": "skills/debugging-vue-performance"
+  },
+  "design-review-board": {
+    "hash": "71433a581a04891402494ccd23bb6406569fa489539bc8095056b6d66cedeca4",
+    "path": "skills/design-review-board"
+  },
+  "draft-review": {
+    "hash": "c75ca42ac3665c3995554e95f62294c29860147098b3a61420ff41f11aaad8df",
+    "path": "skills/draft-review"
+  },
+  "email-sequence": {
+    "hash": "59575059dfe4a0ce1d6e199f950eb4ad0e6d95e6d202f423939db1c57f09ce87",
+    "path": "skills/marketing/sub-skills/email-sequence"
+  },
+  "excalidraw": {
+    "hash": "62fc2be8f1f1cf09bdaa0bda7441c7e43c1159497783788dcbd6130031964a09",
+    "path": "skills/excalidraw"
+  },
+  "final-sweep": {
+    "hash": "f28ef231c54140bcdf7855da6aed688a5b769ec87ed9977ee95787080b848737",
+    "path": "skills/final-sweep"
+  },
+  "flaky-test-fixer": {
+    "hash": "a91f7199bf8b0cbe9b494b270689eda04470ed5111a6c515b43d851b83a6fbaa",
+    "path": "skills/flaky-test-fixer"
+  },
+  "geo-seo": {
+    "hash": "44d98dfcf47b516e617a9922bed1b0eb6100fe3299bb28bda8c094b2fc94e043",
+    "path": "skills/geo-seo"
+  },
+  "gif-search": {
+    "hash": "236a759aeb958205ab6e7ae8b8d12ed86e47c5a2f721aa02e60909fcf2785792",
+    "path": "skills/gif-search"
+  },
+  "grill-me": {
+    "hash": "37ba0cc77ee96a8ca9440b5233ac179fe76213d88fd2fca121dbbee6e60403a5",
+    "path": "skills/grill-me"
+  },
+  "gws": {
+    "hash": "1c12e551ac64367b163f6ca09bc460bc3b349ee3c48f8f88ca9a7664ef73c7c0",
+    "path": "skills/gws"
+  },
+  "hit-area": {
+    "hash": "e463aa926ba2f26de6e64dff6929521d70b64b01154261fe5c2db37c7803314d",
+    "path": "skills/hit-area"
+  },
+  "html-in-canvas": {
+    "hash": "dac5417febdda76c4edb8fe0c2b689a96266e2ebf077a4b240b12fdaeb950bb9",
+    "path": "skills/html-in-canvas"
+  },
+  "improve-codebase-architecture": {
+    "hash": "715c524d6515ca23f338743d493b1f7f372f1f9def2168e1dc2350bebe681846",
+    "path": "skills/improve-codebase-architecture"
+  },
+  "launch-strategy": {
+    "hash": "d140c158163f5f3b5f2663ebb5ba65512c02a58421db65a0ae8cac291b48964d",
+    "path": "skills/marketing/sub-skills/launch-strategy"
+  },
+  "mcp-atlas": {
+    "hash": "bf0d5ffe954531be77bfb105efdf672bd742b3d7350ef1ac3445dc14cd088bcf",
+    "path": "skills/mcp-atlas"
+  },
+  "mcporter": {
+    "hash": "38b39f57f00add89fdc94b680aa4e348e423ffef1502d2b0d02840f5150d57eb",
+    "path": "skills/mcporter"
+  },
+  "ocr-and-documents": {
+    "hash": "1c55ca5e6803fa5a7dba8b1d55d2beb22263930e51ec3fea3cf6494ccf8afd19",
+    "path": "skills/ocr-and-documents"
+  },
+  "offer-creation": {
+    "hash": "20d40ed15f6eec5fd93956c9a274f9dce69840705ff13d731a1be5844e9d4767",
+    "path": "skills/marketing/sub-skills/offer-creation"
+  },
+  "p5js": {
+    "hash": "fb2ce05a7fa96a94ed8490147cdeb7fcfb71484488caa0440c3ff896bce5455d",
+    "path": "skills/p5js"
+  },
+  "perf-fix-with-proof": {
+    "hash": "f0570615f501ba7d264820fa5bb91c70d0df36b6fca4abcaa319b1a71f5f15a3",
+    "path": "skills/perf-fix-with-proof"
+  },
+  "plan-audit": {
+    "hash": "36047a94e560621f2677f2a9aec5cf038af99f9185e57a3f90dc03f5c675425f",
+    "path": "skills/plan-audit"
+  },
+  "post-meeting-analysis": {
+    "hash": "3e9c99342c0fd63349940fe6ec5d7a36737e284788438c0cea5b05217cb8af43",
+    "path": "skills/post-meeting-analysis"
+  },
+  "postmortem-writing": {
+    "hash": "e8014266f58522c76ea5299ac408f167c3e8b8ab2d64d61a22633dfd54138b41",
+    "path": "skills/postmortem-writing"
+  },
+  "powerpoint": {
+    "hash": "e17608df3fc4e7ca7e5a2c5c4e951f8105b6cf96f9689f944fd7b305eaa26059",
+    "path": "skills/powerpoint"
+  },
+  "pr-backlog-sweep": {
+    "hash": "dc28595070db06d403d77c85120976d732a56108d45c9b887b5eb4b1ade45843",
+    "path": "skills/pr-backlog-sweep"
+  },
+  "pricing-strategy": {
+    "hash": "00b1ed446179dc627d0b8f9526c7714ce4cb2919e525fd2a7ffbaff6604b39ff",
+    "path": "skills/marketing/sub-skills/pricing-strategy"
+  },
+  "programmatic-seo": {
+    "hash": "eb0d826b26b12699f236b00c2886df5c6b67b5b4d3b46b2858f32f9ae771fdff",
+    "path": "skills/marketing/sub-skills/programmatic-seo"
+  },
+  "project-status-generator": {
+    "hash": "439121b4502d4a0e8a3da6c9c80b2f56a1cc8f37814e86b82736a8ec6151e350",
+    "path": "skills/project-status-generator"
+  },
+  "referral-program": {
+    "hash": "d75412dfab14c1c4007a7327058433b55f5794192dabee5853df7cbf9beb4842",
+    "path": "skills/marketing/sub-skills/referral-program"
+  },
+  "regenerating-screenshots": {
+    "hash": "13be44f5a4bff1beffa71fc12031e197738e57fa77cc77cf0d11a3f2db59809d",
+    "path": "skills/comfyui/regenerating-screenshots"
+  },
+  "regression-risk-reviewer": {
+    "hash": "8cae17ea8604c6d27f10d6a734a9b5215aa6b3748df77532c3772298c4513ac8",
+    "path": "skills/regression-risk-reviewer"
+  },
+  "release-test-plan": {
+    "hash": "18a2499c72e26710971495f75fc7d84b684b1d796071c41e12fbe4b4ceedf160",
+    "path": "skills/release-test-plan"
+  },
+  "repo-doc-audit": {
+    "hash": "0a54445ddcbdda3110bf287980300bef8ca8e2889986e81c8149fbadf54c7a0f",
+    "path": "skills/repo-doc-audit"
+  },
+  "review-comment-futures": {
+    "hash": "7fd4d4b2b025c6781393eb4bbbc8b7aae3b3c7f5e26348ae271eb084472b552f",
+    "path": "skills/review-comment-futures"
+  },
+  "reviving-stale-prs": {
+    "hash": "597f78189202591b77d80a31bc5f7f2ee8888d603ab69f68a0b4b676c4a5e023",
+    "path": "skills/reviving-stale-prs"
+  },
+  "sales-enablement": {
+    "hash": "cc195e6b7c7b587b1d77272ec487100289f6212b67cd6411d6e5271b929f3905",
+    "path": "skills/marketing/sub-skills/sales-enablement"
+  },
+  "signup-flow-cro": {
+    "hash": "34ca3b8021a9b5b974fa087f98072d1dc48402b78d85bdd24f4372eafd63e38d",
+    "path": "skills/marketing/sub-skills/signup-flow-cro"
+  },
+  "site-architecture": {
+    "hash": "d2ac61cfb0be8353bd6e3430f67d888e14e71cd5ac8ed8df4fc61a58f40ffbcf",
+    "path": "skills/marketing/sub-skills/site-architecture"
+  },
+  "skill-from-trial-run": {
+    "hash": "b56234ff9490f646c0b8e49baaf0536624e91ca451c5aa8e2e14fbe388788bbd",
+    "path": "skills/skill-from-trial-run"
+  },
+  "social-content": {
+    "hash": "3bd80984b6a8c69d811dfba3f64466ad1ef72f91b817e48aa673fff3645d6488",
+    "path": "skills/marketing/sub-skills/social-content"
+  },
+  "spec-driven-development": {
+    "hash": "353690f670945d1aab62d237b9b0611a01238cb0c1530b3a54df4449bf9d2ced",
+    "path": "skills/spec-driven-development"
+  },
+  "systematic-debugging": {
+    "hash": "099ee2264018662bae3331690fcffd752c27cff72596beef30e539d282b0bf9f",
+    "path": "skills/systematic-debugging"
+  },
+  "task-decomposition": {
+    "hash": "f547fb52e18a3832d37da645e4c30fb1202713e871aa793880c48e6ee4b95ac6",
+    "path": "skills/task-decomposition"
+  },
+  "test-driven-development": {
+    "hash": "be85a10f961189fdbd083fb2c24f2d923ece8c563ef3c24423e5e14ecc6af7f6",
+    "path": "skills/test-driven-development"
+  },
+  "test-mock-quality-analysis": {
+    "hash": "de5026355dc4b4ee9b8740b58ea9af57970e9fd16da3ddf396288863b0286690",
+    "path": "skills/test-mock-quality-analysis"
+  },
+  "twitter": {
+    "hash": "88ef232b3a68de16edb4d1e56f109fe7a4b8927961ef82168849f24a7adf2f00",
+    "path": "skills/twitter"
+  },
+  "vue-best-practices": {
+    "hash": "173b92c91408dfa49217f1fe1f2cc9be2fd64aba85fab354d29dcc2757b6765c",
+    "path": "skills/vue-best-practices"
+  },
+  "vue-debug-guides": {
+    "hash": "49cec2422661a8c528ebbba5e0f8c35ea226eef7e74013ded31657d2b791a5b6",
+    "path": "skills/vue-debug-guides"
+  },
+  "vue-pinia-best-practices": {
+    "hash": "91fa2b42a6a27f41fefd5609479565ef93904493ecaee4015188020d2ae190e5",
+    "path": "skills/vue-pinia-best-practices"
+  },
+  "writing-playwright-tests": {
+    "hash": "8da4b3c8a07e2360f411bc2a5aac2c79b3be6046b80232718e982fab6d862688",
+    "path": "skills/comfyui/writing-playwright-tests"
+  },
+  "writing-storybook-stories": {
+    "hash": "04de8cc9deb41767cbfd9e3ba1040096c91d089853392e1352d9ce8c7d8e4c07",
+    "path": "skills/comfyui/writing-storybook-stories"
+  }
+}

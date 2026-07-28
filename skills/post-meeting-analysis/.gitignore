@@ -1,0 +1,12 @@
+# Runtime state files (generated on first run)
+meeting-state.yaml
+run-log.yaml
+
+# Per-meeting output files (contain real meeting data)
+outputs/*/
+
+# Keep the outputs directory structure
+!outputs/.gitkeep
+
+# Dashboard is regenerated each run
+dashboard.html

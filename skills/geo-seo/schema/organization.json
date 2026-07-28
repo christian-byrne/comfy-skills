@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "COMPANY_NAME",
+  "url": "https://example.com",
+  "logo": "https://example.com/logo.png",
+  "description": "Brief description of what the company does",
+  "foundingDate": "2020",
+  "founders": [
+    {
+      "@type": "Person",
+      "name": "Founder Name"
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/COMPANY",
+    "https://twitter.com/COMPANY",
+    "https://github.com/COMPANY",
+    "https://www.youtube.com/@COMPANY",
+    "https://www.crunchbase.com/organization/COMPANY",
+    "https://en.wikipedia.org/wiki/COMPANY"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "support@example.com"
+  }
+}

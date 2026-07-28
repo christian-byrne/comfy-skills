@@ -1,0 +1,13 @@
+# Harbor task configuration
+# See: https://harborframework.com/docs/tasks
+
+[task]
+name = "my-task"
+description = "Brief description of what the agent should accomplish"
+timeout_seconds = 300   # 5 minutes per attempt
+max_turns = 30          # Max agent turns before forced stop
+
+[scoring]
+# Score is written by tests/test.sh to /logs/reward.txt
+# Range: 0.0 (complete failure) to 1.0 (perfect)
+method = "script"       # "script" or "llm-judge"

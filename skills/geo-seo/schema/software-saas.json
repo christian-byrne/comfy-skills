@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Product Name",
+  "url": "https://example.com",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Brief description of what the software does",
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "0",
+    "highPrice": "99",
+    "priceCurrency": "USD",
+    "offerCount": 3
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "ratingCount": "150",
+    "bestRating": "5"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Company Name",
+    "url": "https://example.com"
+  },
+  "featureList": "Feature 1, Feature 2, Feature 3"
+}

@@ -1,0 +1,31 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "BUSINESS_NAME",
+  "url": "https://example.com",
+  "image": "https://example.com/photo.jpg",
+  "description": "Brief description of the business",
+  "telephone": "+1-555-000-0000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main St",
+    "addressLocality": "City",
+    "addressRegion": "ST",
+    "postalCode": "12345",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.7128,
+    "longitude": -74.006
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  ],
+  "sameAs": ["https://www.google.com/maps/place/BUSINESS", "https://www.yelp.com/biz/BUSINESS"]
+}

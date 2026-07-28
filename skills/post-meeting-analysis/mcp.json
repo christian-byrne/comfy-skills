@@ -1,0 +1,17 @@
+{
+  "fireflies": {
+    "command": "npx",
+    "args": ["-y", "fireflies-mcp-server@latest"],
+    "env": {
+      "FIREFLIES_API_KEY": "${FIREFLIES_API_KEY}"
+    },
+    "includeTools": [
+      "fireflies_get_transcripts",
+      "fireflies_get_transcript",
+      "fireflies_fetch",
+      "fireflies_get_summary",
+      "fireflies_search",
+      "fireflies_get_action_items"
+    ]
+  }
+}

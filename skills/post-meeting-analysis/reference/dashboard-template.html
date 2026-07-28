@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meeting Intelligence Dashboard</title>
+    <style>
+      :root {
+        --bg: #0d1117;
+        --surface: #161b22;
+        --border: #30363d;
+        --text: #e6edf3;
+        --text-muted: #8b949e;
+        --accent: #58a6ff;
+        --green: #3fb950;
+        --yellow: #d29922;
+        --red: #f85149;
+        --orange: #db6d28;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 1.5rem 0 0.75rem;
+        color: var(--accent);
+      }
+      .subtitle {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+      }
+      .card .metric {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+      .card .label {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .metric.green {
+        color: var(--green);
+      }
+      .metric.yellow {
+        color: var(--yellow);
+      }
+      .metric.red {
+        color: var(--red);
+      }
+      .metric.accent {
+        color: var(--accent);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.85rem;
+      }
+      th {
+        color: var(--text-muted);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.15rem 0.5rem;
+        border-radius: 10px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      .badge-green {
+        background: rgba(63, 185, 80, 0.15);
+        color: var(--green);
+      }
+      .badge-yellow {
+        background: rgba(210, 153, 34, 0.15);
+        color: var(--yellow);
+      }
+      .badge-red {
+        background: rgba(248, 81, 73, 0.15);
+        color: var(--red);
+      }
+      .badge-blue {
+        background: rgba(88, 166, 255, 0.15);
+        color: var(--accent);
+      }
+      .badge-muted {
+        background: rgba(139, 148, 158, 0.15);
+        color: var(--text-muted);
+      }
+      .bar-container {
+        display: flex;
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        background: var(--border);
+      }
+      .bar-segment {
+        height: 100%;
+      }
+      .heatmap {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.5rem;
+      }
+      .heatmap-cell {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 0.5rem;
+        text-align: center;
+      }
+      .heatmap-cell .name {
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+      .heatmap-cell .count {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .timeline {
+        list-style: none;
+        border-left: 2px solid var(--border);
+        padding-left: 1rem;
+      }
+      .timeline li {
+        margin-bottom: 0.75rem;
+        position: relative;
+      }
+      .timeline li::before {
+        content: '';
+        position: absolute;
+        left: -1.35rem;
+        top: 0.35rem;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      .timeline .date {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+      }
+      .timeline .title {
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+      .timeline .meta {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+      .stale-warning {
+        color: var(--red);
+        font-weight: 600;
+      }
+      footer {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📊 Meeting Intelligence Dashboard</h1>
+    <p class="subtitle">
+      Generated:
+      <!-- GENERATED_AT -->
+      | Meetings processed:
+      <!-- TOTAL_PROCESSED -->
+    </p>
+
+    <!-- HERO METRICS -->
+    <div class="grid">
+      <div class="card">
+        <div class="metric accent"><!-- TOTAL_PROCESSED --></div>
+        <div class="label">Meetings Processed</div>
+      </div>
+      <div class="card">
+        <div class="metric yellow"><!-- TOTAL_UNPROCESSED --></div>
+        <div class="label">Unprocessed</div>
+      </div>
+      <div class="card">
+        <div class="metric green"><!-- TOTAL_ACTION_ITEMS --></div>
+        <div class="label">Action Items Extracted</div>
+      </div>
+      <div class="card">
+        <div class="metric red"><!-- STALE_ITEMS --></div>
+        <div class="label">Stale Carried-Forward</div>
+      </div>
+      <div class="card">
+        <div class="metric accent"><!-- FACT_CHECKS --></div>
+        <div class="label">Fact-Check Claims</div>
+      </div>
+      <div class="card">
+        <div class="metric green"><!-- DISPATCH_TASKS --></div>
+        <div class="label">Dispatch Tasks Generated</div>
+      </div>
+    </div>
+
+    <!-- PROCESSING PROGRESS BAR -->
+    <h2>Processing Progress</h2>
+    <div class="bar-container" style="margin-bottom: 0.5rem">
+      <!-- BAR_SEGMENTS -->
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.8rem">
+      <span style="color: var(--green)">●</span> Processed
+      <span style="color: var(--yellow); margin-left: 1rem">●</span> Unprocessed
+      <span style="color: var(--accent); margin-left: 1rem">●</span> Rerun
+    </p>
+
+    <!-- ACTION ITEMS BY PERSON -->
+    <h2>Action Items by Person</h2>
+    <div class="heatmap">
+      <!-- PERSON_HEATMAP -->
+    </div>
+
+    <!-- RECURRING MEETING SERIES -->
+    <h2>Recurring Meeting Series</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Series</th>
+          <th>Sessions</th>
+          <th>Open Items</th>
+          <th>Stale</th>
+          <th>Last Processed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- SERIES_ROWS -->
+      </tbody>
+    </table>
+
+    <!-- RECENT MEETINGS -->
+    <h2>Recent Meetings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Actions</th>
+          <th>Decisions</th>
+          <th>Fact-Checks</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- MEETING_ROWS -->
+      </tbody>
+    </table>
+
+    <!-- STALE ACTION ITEMS -->
+    <h2>⚠️ Stale Carried-Forward Items</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Owner</th>
+          <th>Originally Assigned</th>
+          <th>Sessions Open</th>
+          <th>Series</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- STALE_ROWS -->
+      </tbody>
+    </table>
+
+    <!-- PROCESSING TIMELINE -->
+    <h2>Processing Timeline</h2>
+    <ul class="timeline">
+      <!-- TIMELINE_ENTRIES -->
+    </ul>
+
+    <footer>
+      Post-Meeting Analysis Dashboard · Auto-generated by post-meeting-analysis skill<br />
+      View locally: <code>python3 -m http.server 8090</code> →
+      <code>http://localhost:8090/skills/post-meeting-analysis/dashboard.html</code>
+    </footer>
+  </body>
+</html>
