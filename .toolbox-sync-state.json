@@ -1,6 +1,7 @@
 {
   "ab-test-setup": {
     "hash": "7b22664a430d49e5c16bd87055c004b957c238447e6696d0183005cdd211b251",
+    "listing_url": "/t/ab-test-setup",
     "path": "skills/marketing/sub-skills/ab-test-setup"
   },
   "agent-browser": {
@@ -10,10 +11,12 @@
   },
   "ai-seo": {
     "hash": "a90dd6ada037afbcbceebb42f6bfbb9407c1751e65b03c606e7a7a963801ad23",
+    "listing_url": "/t/ai-seo",
     "path": "skills/marketing/sub-skills/ai-seo"
   },
   "ai-style-guide": {
     "hash": "eec03ed57094b94925500d117faeb7acd9206c3becb201f5e540ab4d3079bde5",
+    "listing_url": "/t/ai-style-guide",
     "path": "skills/ai-style-guide"
   },
   "apple": {
@@ -53,6 +56,7 @@
   },
   "avoid-ai-writing": {
     "hash": "bafbd39a86b10598d2a76dc0f55f7b290eb348aa5553d91b7a0b0c85d9af9038",
+    "listing_url": "/t/avoid-ai-writing",
     "path": "skills/avoid-ai-writing"
   },
   "backport-management": {
@@ -82,6 +86,7 @@
   },
   "churn-prevention": {
     "hash": "af17bd5f7df6e4cbca37391dfcfaf52fa89991dc0280ea8b1a879f4d341ac999",
+    "listing_url": "/t/churn-prevention",
     "path": "skills/marketing/sub-skills/churn-prevention"
   },
   "closed-bug-regression-audit": {
@@ -91,6 +96,7 @@
   },
   "cold-email": {
     "hash": "f6c02b763a60ebee13fe8d2dc22d00bb20d1f282ac34d730470f122c0bb80984",
+    "listing_url": "/t/cold-email",
     "path": "skills/marketing/sub-skills/cold-email"
   },
   "comfyui-backend": {
@@ -110,10 +116,12 @@
   },
   "content-strategy": {
     "hash": "e7e75a091bb918df75fbf18bf13ba546435859d3b5268586b28c568b6aa22d74",
+    "listing_url": "/t/content-strategy",
     "path": "skills/marketing/sub-skills/content-strategy"
   },
   "copy-editing": {
     "hash": "9f83eeb973a862f855934af6d650ca78f41654a29978f378eb3d8ffa4a1a12dd",
+    "listing_url": "/t/copy-editing",
     "path": "skills/marketing/sub-skills/copy-editing"
   },
   "core-release": {
@@ -138,6 +146,7 @@
   },
   "customer-research": {
     "hash": "766ea368888db25b008d239fa509d9c7f82fde0a5cf30bb1d35236942e285ff5",
+    "listing_url": "/t/customer-research",
     "path": "skills/marketing/sub-skills/customer-research"
   },
   "debugging-vue-performance": {
@@ -156,6 +165,7 @@
   },
   "email-sequence": {
     "hash": "59575059dfe4a0ce1d6e199f950eb4ad0e6d95e6d202f423939db1c57f09ce87",
+    "listing_url": "/t/email-sequence",
     "path": "skills/marketing/sub-skills/email-sequence"
   },
   "excalidraw": {
@@ -175,6 +185,7 @@
   },
   "geo-seo": {
     "hash": "44d98dfcf47b516e617a9922bed1b0eb6100fe3299bb28bda8c094b2fc94e043",
+    "listing_url": "/t/geo-seo",
     "path": "skills/geo-seo"
   },
   "gif-search": {
@@ -208,6 +219,7 @@
   },
   "launch-strategy": {
     "hash": "d140c158163f5f3b5f2663ebb5ba65512c02a58421db65a0ae8cac291b48964d",
+    "listing_url": "/t/launch-strategy",
     "path": "skills/marketing/sub-skills/launch-strategy"
   },
   "mcp-atlas": {
@@ -227,6 +239,7 @@
   },
   "offer-creation": {
     "hash": "20d40ed15f6eec5fd93956c9a274f9dce69840705ff13d731a1be5844e9d4767",
+    "listing_url": "/t/offer-creation",
     "path": "skills/marketing/sub-skills/offer-creation"
   },
   "p5js": {
@@ -266,10 +279,12 @@
   },
   "pricing-strategy": {
     "hash": "00b1ed446179dc627d0b8f9526c7714ce4cb2919e525fd2a7ffbaff6604b39ff",
+    "listing_url": "/t/pricing-strategy",
     "path": "skills/marketing/sub-skills/pricing-strategy"
   },
   "programmatic-seo": {
     "hash": "eb0d826b26b12699f236b00c2886df5c6b67b5b4d3b46b2858f32f9ae771fdff",
+    "listing_url": "/t/programmatic-seo",
     "path": "skills/marketing/sub-skills/programmatic-seo"
   },
   "project-status-generator": {
@@ -279,6 +294,7 @@
   },
   "referral-program": {
     "hash": "d75412dfab14c1c4007a7327058433b55f5794192dabee5853df7cbf9beb4842",
+    "listing_url": "/t/referral-program",
     "path": "skills/marketing/sub-skills/referral-program"
   },
   "regenerating-screenshots": {
@@ -313,14 +329,17 @@
   },
   "sales-enablement": {
     "hash": "cc195e6b7c7b587b1d77272ec487100289f6212b67cd6411d6e5271b929f3905",
+    "listing_url": "/t/sales-enablement",
     "path": "skills/marketing/sub-skills/sales-enablement"
   },
   "signup-flow-cro": {
     "hash": "34ca3b8021a9b5b974fa087f98072d1dc48402b78d85bdd24f4372eafd63e38d",
+    "listing_url": "/t/signup-flow-cro",
     "path": "skills/marketing/sub-skills/signup-flow-cro"
   },
   "site-architecture": {
     "hash": "d2ac61cfb0be8353bd6e3430f67d888e14e71cd5ac8ed8df4fc61a58f40ffbcf",
+    "listing_url": "/t/site-architecture",
     "path": "skills/marketing/sub-skills/site-architecture"
   },
   "skill-from-trial-run": {
@@ -330,6 +349,7 @@
   },
   "social-content": {
     "hash": "3bd80984b6a8c69d811dfba3f64466ad1ef72f91b817e48aa673fff3645d6488",
+    "listing_url": "/t/social-content",
     "path": "skills/marketing/sub-skills/social-content"
   },
   "spec-driven-development": {
