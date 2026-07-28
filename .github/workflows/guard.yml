@@ -1,0 +1,19 @@
+name: Guard
+on: [push]
+permissions:
+  contents: read
+jobs:
+  generated-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 50 }
+      - name: Reject hand edits
+        run: |
+          set -euo pipefail
+          author=$(git log -1 --format='%an')
+          if [ "$author" != "comfy-toolbox-sync[bot]" ]; then
+            echo "::error::$author committed directly. This repo is generated —"
+            echo "::error::make the change in the source repo and let the sync run."
+            exit 1
+          fi
