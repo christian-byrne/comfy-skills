@@ -9,6 +9,10 @@
     "listing_url": "https://tools.comfy.org/t/agent-browser",
     "path": "skills/agent-browser"
   },
+  "agent-web-audit": {
+    "hash": "004c4839aca92737cf3c43734e1892ebdf2eea13ecd83e3d9044b89e5f503c9c",
+    "path": "skills/agent-web-audit"
+  },
   "ai-seo": {
     "hash": "a90dd6ada037afbcbceebb42f6bfbb9407c1751e65b03c606e7a7a963801ad23",
     "listing_url": "/t/ai-seo",
