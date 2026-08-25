@@ -174,9 +174,14 @@
     "path": "skills/draft-review"
   },
   "dual-track-comms": {
-    "hash": "93d74fe14c63882e1141caeb9f9c58ebb5776feb5d67a02ef007c477abcbe509",
+    "hash": "2472f30b8379aa7a7253c43ad2ded4d0160a2bf8901e4c754f96a77d55adf1f9",
     "listing_url": "/t/dual-track-comms",
     "path": "skills/dual-track-comms"
+  },
+  "dual-track-comms-hooks": {
+    "hash": "6db04f35061d81fc5775c30612fc240493404f6329272f0bcc04a3086d21a3ad",
+    "listing_url": "/t/dual-track-comms-hooks",
+    "path": "skills/dual-track-comms-hooks"
   },
   "email-sequence": {
     "hash": "59575059dfe4a0ce1d6e199f950eb4ad0e6d95e6d202f423939db1c57f09ce87",
