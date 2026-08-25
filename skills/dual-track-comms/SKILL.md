@@ -66,6 +66,46 @@ Don't hand-convert. `@charlie-labs/format-for` (npm) parses one markdown input a
 GitHub/Slack/Linear dialects, converting `+++` ↔ `<details>` and degrading safely on Slack
 (collapsible → bold header + quote). For Figma/email, apply the table above manually.
 
+## Enforcement Hooks (optional)
+
+The format is also enforceable mechanically. `scripts/` in this skill bundles two
+Claude Code PreToolUse hooks (advisory — they warn/deny with guidance but never crash
+the agent), their tests, and the shared telemetry lib:
+
+- `dual-comms-external-posts.sh` (matcher: Bash) — intercepts `gh pr comment`,
+  `gh issue comment`, `gh pr review`, Linear `commentCreate` curls, and Slack
+  `chat.postMessage` curls. Allows bodies that are already terse (≤400 chars and
+  ≤6 lines; Linear gets 600 for GraphQL boilerplate), contain a `<details>` or
+  `+++` collapsible, or are Slack threaded replies (`thread_ts` present).
+  Override: append `# comms:exempt` to the command.
+- `dual-comms-notion-posts.sh` (matcher: MCP Notion comment/patch tools) — same
+  budgets for Notion comments. Override token in the body: `comms:exempt`.
+- `lib-jsonl-append.sh` — required helper; both hooks source it from their own
+  directory. Telemetry appends to `$HOOKS_LOG_DIR/dual-comms-*.jsonl`.
+
+Install: copy all three scripts to one directory, `chmod +x`, and register in
+`~/.claude/settings.json`:
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [{ "type": "command", "command": "/path/to/dual-comms-external-posts.sh" }]
+      },
+      {
+        "matcher": "mcp__notion__API_create_a_comment|mcp__notion__API_patch_block_children",
+        "hooks": [{ "type": "command", "command": "/path/to/dual-comms-notion-posts.sh" }]
+      }
+    ]
+  }
+}
+```
+
+Verify with the bundled `*.test.sh` files (run directly; they exercise allow, deny,
+and override paths).
+
 ## When NOT to Use
 
 - The whole message fits the budget — send it plain
