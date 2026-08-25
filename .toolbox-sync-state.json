@@ -283,6 +283,11 @@
     "listing_url": "/t/pr-backlog-sweep",
     "path": "skills/pr-backlog-sweep"
   },
+  "pr-test-plan": {
+    "hash": "c38a23017b30332df8896781a4b76450f75910a1cb089065c0afd8e1f1f6120a",
+    "listing_url": "/t/pr-test-plan",
+    "path": "skills/pr-test-plan"
+  },
   "pricing-strategy": {
     "hash": "00b1ed446179dc627d0b8f9526c7714ce4cb2919e525fd2a7ffbaff6604b39ff",
     "listing_url": "/t/pricing-strategy",
@@ -314,7 +319,7 @@
     "path": "skills/regression-risk-reviewer"
   },
   "release-test-plan": {
-    "hash": "18a2499c72e26710971495f75fc7d84b684b1d796071c41e12fbe4b4ceedf160",
+    "hash": "87d521741c57e1277b444f15bfe9ce881b234b75f92acbb8a58a841bd26ff257",
     "listing_url": "/t/release-test-plan",
     "path": "skills/release-test-plan"
   },

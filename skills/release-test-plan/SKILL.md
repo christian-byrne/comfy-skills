@@ -4,7 +4,6 @@ description: Generates a risk-prioritized QA test plan for a release. Analyzes g
 interaction: autonomous
 type: leaf
 ---
-
 # Release Test Plan Generator
 
 Creates a compact, risk-prioritized QA test plan from git history between two versions. Output is a Notion page with flat feature-grouped test checkboxes that QA testers can execute without code knowledge. This is a general RC test plan — not specific to any single distribution (cloud, desktop, local).
@@ -117,6 +116,18 @@ Order items from highest to lowest risk.
 
 ### Step 7: Write Test Cases
 
+> **Canonical case-writing rules live in `pr-test-plan` → "Write the Cases".** That skill
+> owns the audience, focus/omit, and calibration rules — including the **recorder-ready**
+> rule (cases written as start-to-finish app sessions that map to `pnpm comfy-test record`)
+> and the **"Recorder Setup Block"** spec (per-section copy-pastable command + flag
+> mapping + standard plan frontmatter). This section keeps only the release-scale budget
+> and repeats the rules for convenience. If the two ever disagree, `pr-test-plan` wins.
+>
+> **Shift-left:** if a feature was already signed off on its own PR via `pr-test-plan`,
+> drop it from this plan and record it under "Already signed off per-PR". The point of
+> per-PR QA is that the release plan shrinks to integration, regression, and whatever a
+> preview environment could not cover.
+
 **Budget**: 60–100 total checkboxes across all items. 1–4 per item.
 
 **Audience**: QA testers who do NOT read code. Every test case must be:
@@ -228,9 +239,7 @@ If a Notion database/page ID is provided, create the page, then append blocks.
 
 **CRITICAL**: Never modify a Notion page the user says they are editing or have edited. If they paste content, that is the source of truth — do not overwrite it.
 
-> **Triage test items:** Before publishing to Notion, share the draft item list
-> with QA leads so they can accept, skip, or reprioritize — publishing only the
-> agreed set keeps the plan focused.
+> **Triage test items:** Before publishing to Notion, walk QA leads through the item list so they can accept/skip/prioritize interactively (an interactive checklist tool works well here if one is available).
 
 ### Step 10: Present for Review
 
@@ -240,17 +249,30 @@ Show the user:
 2. The full test plan
 3. Ask: "Publish to Notion?" / "Adjust anything?"
 
+### Step 11: Recorder Handoff (optional)
+
+If the team runs a CLI test recorder (QA walkthrough → generated Playwright test → mergeable
+PR), tag which plan items are recorder-eligible: deterministic "do X → verify Y" cases with
+exact UI labels and no judgment steps. QA executes those cases under the recorder so each
+release plan converts its best cases into permanent regression tests. See the `post-release`
+skill graph (`signal-translation` action menu) for the loop this feeds.
+
 ## Output format — the standard QA test-plan structure
 
 This is the canonical shape of the deliverable. Prefer it whenever the release
 gates behavior on env/flags or ships more than a trivial patch. The Notion flat
 format above is a compact fallback; this fuller Markdown structure is the
-source-of-truth format the team relies on for real releases.
+source-of-truth format the team relies on for real releases. A reference
+instance is `qa-test-plan-cloud-1.47.md` (kept as the exemplar).
 
 ### Skeleton
 
 ```markdown
 # QA Test Plan — {distribution} {base_version} → {target_version} [{note e.g. "skipping 1.46"}]
+
+{Standard plan frontmatter — see `pr-test-plan` → "Recorder Setup Block": non-technical
+recorder intro, one-time setup + comfy-cli recommendation, collapsed "Prompt for
+agents" block linking back to this page.}
 
 **Prepared for:** QA team
 **Deploy:** {env} (currently on `{base_branch}` tip `{base_sha}`) → `{target_branch}` tip `{target_sha}`
@@ -274,8 +296,17 @@ The `{flag}` flag is ON for `{cohort}`. {What forks on it.}
 2. **`{flag}` ON + {context B}** — {behavior}.
 3. **`{flag}` OFF** — legacy path. Must still work.
 
-**Dev override to force the flag in a session:** in browser console run
-`localStorage.setItem('ff:{flag}_enabled','false')` then reload. (Set to `'true'` to force on.)
+**Force a flag for one session with `?ff=` URL params** (preferred — session-scoped,
+no cross-test corruption, works on cloud): append `?ff={flag}` to force on, or
+`?ff={flag}:false` to force off; repeat the param for multiple flags. The recorder's
+`--feature-flags {flag}:true` flag appends these automatically. Only fall back to the
+localStorage dev override for flags the URL mechanism doesn't support — note it in the
+plan if so.
+
+**Feature-flag deep-link URLs:** when the deployment supports flag-state URLs
+(query-param deep links that open the app with a given flag forced), put the exact URL on
+each flagged scenario so testers and recorder runs land in the right state in one click
+instead of hand-toggling localStorage.
 
 ---
 
@@ -310,6 +341,8 @@ The `{flag}` flag is ON for `{cohort}`. {What forks on it.}
 
 {One line of context / why this is high risk.}
 
+▸ Recorder setup (toggle): `pnpm comfy-test record --distribution {id} --workflow {w} --tags {t} --feature-flags {f} --use-case test-plan-step --description "{area}"`
+
 - ☐ **Scenario 1 (flag ON + X):** {concrete UI steps} — verify {observable expected result} (#PR)
 - ☐ {multi-step user journey with a mid-flow perturbation} — verify {result} (#PR)
 
@@ -338,7 +371,7 @@ The `{flag}` flag is ON for `{cohort}`. {What forks on it.}
 - ☐ **Header block**: Prepared-for, Deploy line with `from → to` SHAs (and branch tips), one line on what ships.
 - ☐ **Test Targets**: which env/distribution each class of item belongs to.
 - ☐ **How to report issues**: PR author tag or the QA Slack thread.
-- ☐ **Feature-flag scenarios** — include only when a flag gates behavior: the run matrix (each scenario) plus the `localStorage.setItem('ff:{flag}_enabled', …)` dev-override snippet.
+- ☐ **Feature-flag scenarios** — include only when a flag gates behavior: the run matrix (each scenario) plus the `?ff={flag}` / `?ff={flag}:false` URL-param snippet (localStorage dev override only as a documented fallback).
 - ☐ **Summary table of the delta(s)**: range, new-commit count that is **patch-id / `--cherry-pick` filtered** so already-shipped work is excluded, and headline changes.
 - ☐ **Risk classification** into HIGH / MEDIUM / LOW, each with its one-line rule:
   - HIGH = auth / billing / payment / data → test first, all flag scenarios.
@@ -346,6 +379,8 @@ The `{flag}` flag is ON for `{cohort}`. {What forks on it.}
   - LOW = copy / telemetry / tests / website → smoke only or skip.
 - ☐ **Per-area sections grouped by feature**, each header carrying the relevant **PR/issue refs**, containing `- [ ]` / `☐` checkbox cases written as concrete **UI steps + expected result** (never code internals).
 - ☐ **Regression sanity checklist** of always-critical paths at the end.
+- ☐ **Standard plan frontmatter** (recorder intro, one-time setup, collapsed "Prompt for agents" block) per `pr-test-plan` → "Recorder Setup Block".
+- ☐ **Per-section recorder setup toggles** — one copy-pastable `pnpm comfy-test record …` command per recordable section, collapsed (Notion toggle) to keep the plan compact.
 
 ### Practice notes (bake these in)
 
@@ -395,7 +430,7 @@ When generating test plans for **ComfyUI frontend releases** (`Comfy-Org/ComfyUI
 
 ### Documents Hub (Notion)
 
-Test plans go in the Notion database/page ID provided in the Inputs Required step.
+Test plans go in the Documents Hub database: `2516d73d-3650-8016-8f03-cffd01fc71ca`
 
 - Set **Category** = "Test Plan"
 - Set **Status** = "To Do"
@@ -420,7 +455,8 @@ Typical sections (use as needed, drop empty ones):
 
 ### Example Notion Pages
 
-Refer to previously published test plans in your team's Notion workspace for format examples.
+- [Test Plan: cloud 1.41 frontend patch](https://www.notion.so/comfy-org/Test-Plan-cloud-1-41-frontend-patch-32e6d73d36508100ba02d273e195ea1a)
+- [Test Plan: 1.42](https://www.notion.so/comfy-org/Test-Plan-cloud-1-42-33b6d73d365081d8a464f691ea99fb64)
 
 ### Additional Reproduction Context (ComfyUI-specific)
 
@@ -440,3 +476,7 @@ Beyond the generic filters, also remove:
 - Internal error logging enrichment
 - PrimeVue → custom component swaps where the UI behavior is unchanged
 - Performance metric collection (TBT, frameDuration, CDP metrics) — unless perf is testable by user
+
+## Parent Graph
+
+Part of: `comfyui`
