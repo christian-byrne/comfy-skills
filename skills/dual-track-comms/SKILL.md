@@ -23,12 +23,12 @@ reader acts only on the top level, nothing should go wrong.
 
 ## Budgets
 
-| Rule                | Value                                            |
-| ------------------- | ------------------------------------------------ |
-| Takeaways           | ≤3                                               |
-| Top-level size      | ≤400 chars AND ≤6 lines                          |
-| Linear payloads     | 600 chars (GraphQL mutation boilerplate allowed) |
-| Override token      | `# comms:exempt` (commands) / `comms:exempt` (bodies) |
+| Rule            | Value                                                 |
+| --------------- | ----------------------------------------------------- |
+| Takeaways       | ≤3                                                    |
+| Top-level size  | ≤400 chars AND ≤6 lines                               |
+| Linear payloads | 600 chars (GraphQL mutation boilerplate allowed)      |
+| Override token  | `# comms:exempt` (commands) / `comms:exempt` (bodies) |
 
 These budgets are enforced by the hooks `packages/hooks/scripts/dual-comms-external-posts.sh`
 (GitHub, Linear, Slack) and `dual-comms-notion-posts.sh` (Notion comments). This skill is the
@@ -37,15 +37,15 @@ collapse mechanism passes regardless of length.
 
 ## Per-Platform Mechanics (validated)
 
-| Platform    | Full-context mechanism                                                                  | Notes                                                                                                    |
-| ----------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| GitHub      | `<details><summary>Title</summary>\n\n…\n\n</details>`                                  | Blank lines around inner markdown or it renders literally. Works in PR/issue comments, reviews, README.   |
-| Linear      | `+++ Section title` … content … `+++`                                                    | Official API markdown syntax. Editor also: `>>>` or `/collapsible`. HTML `<details>` NOT supported — strict inline HTML allowlist strips it. |
-| Slack       | Terse top-level message; full context as a **threaded reply** (`thread_ts`)             | No collapse mechanism exists. A threaded reply IS the full-context track — the hook allows any length there. |
-| Notion      | Comments: terse + link to a page block or child page. Page content: toggle blocks        | Comments have no collapse. Page content is a document, not a message — long-form is legitimate and unpoliced. |
-| Figma       | Comments are plain text only — terse + link to full context elsewhere (Notion/GitHub)     | No markdown, no collapse, no threads with formatting. Never put the detail in a Figma comment.             |
-| Email       | TL;DR ≤3 bullets at top, divider (`---` / `<hr>`), full context below — or link out       | `<details>` is NOT supported in Gmail/Outlook/most clients (caniemail: stripped or rendered inert). Don't use it. |
-| Docs (Notion/Confluence/wiki) | Lead with the takeaway paragraph; push depth into toggles/child pages       | Progressive disclosure, same principle at document scale.                                                  |
+| Platform                      | Full-context mechanism                                                                | Notes                                                                                                                                        |
+| ----------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| GitHub                        | `<details><summary>Title</summary>\n\n…\n\n</details>`                                | Blank lines around inner markdown or it renders literally. Works in PR/issue comments, reviews, README.                                      |
+| Linear                        | `+++ Section title` … content … `+++`                                                 | Official API markdown syntax. Editor also: `>>>` or `/collapsible`. HTML `<details>` NOT supported — strict inline HTML allowlist strips it. |
+| Slack                         | Terse top-level message; full context as a **threaded reply** (`thread_ts`)           | No collapse mechanism exists. A threaded reply IS the full-context track — the hook allows any length there.                                 |
+| Notion                        | Comments: terse + link to a page block or child page. Page content: toggle blocks     | Comments have no collapse. In page content, lead each section with the terse takeaway and put evidence/detail in a `toggle` block (API: block type `toggle` with `children`; toggle headings also work). |
+| Figma                         | Comments are plain text only — terse + link to full context elsewhere (Notion/GitHub) | No markdown, no collapse, no threads with formatting. Never put the detail in a Figma comment.                                               |
+| Email                         | TL;DR ≤3 bullets at top, divider (`---` / `<hr>`), full context below — or link out   | `<details>` is NOT supported in Gmail/Outlook/most clients (caniemail: stripped or rendered inert). Don't use it.                            |
+| Docs (Notion/Confluence/wiki) | Lead with the takeaway paragraph; push depth into toggles/child pages                 | Progressive disclosure, same principle at document scale.                                                                                    |
 
 ## Writing the Top Level
 
@@ -110,7 +110,9 @@ and override paths).
 
 - The whole message fits the budget — send it plain
 - Threaded replies (Slack `thread_ts` present) — they ARE the full-context track
-- Notion page content and other documents — long-form is the point
+- Notion page content and other documents are exempt from the message budgets, but not
+  from the structure: lead each section with the takeaway and push evidence into toggle
+  blocks or child pages
 - Genuinely exempt posts — append the override token, which is logged
 
 ## Example (GitHub PR comment)
