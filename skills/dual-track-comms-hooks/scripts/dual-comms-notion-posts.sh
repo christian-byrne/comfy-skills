@@ -8,11 +8,11 @@ set -euo pipefail
 # from the comment.
 #
 # Scope note: this hook deliberately covers ONLY comment creation
-# (mcp__notion__API_create_a_comment). Page-content writes
+# (mcp__notion__API_create_a_comment). Page-content writes  # skill-lint-allow-mcp
 # (API_patch_block_children etc.) are documents, not messages — long-form is
 # legitimate there and is NOT policed.
 #
-# Protocol: PreToolUse (matcher: mcp__notion__API_create_a_comment)
+# Protocol: PreToolUse (matcher: mcp__notion__API_create_a_comment)  # skill-lint-allow-mcp
 #   stdin:  JSON { tool_name, tool_input: { rich_text: [ { text: { content } } ] }, session_id }
 #   stdout: deny JSON or empty
 #   exit 0: always (advisory hook — never crashes the agent)
@@ -27,8 +27,8 @@ set -euo pipefail
 
 if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
   echo "Hook: enforces dual-comms format (terse comment + full context in a linked page)"
-  echo "      on Notion comments posted via mcp__notion__API_create_a_comment"
-  echo "Event: PreToolUse (matcher: mcp__notion__API_create_a_comment)"
+  echo "      on Notion comments posted via mcp__notion__API_create_a_comment"  # skill-lint-allow-mcp
+  echo "Event: PreToolUse (matcher: mcp__notion__API_create_a_comment)"  # skill-lint-allow-mcp
   echo "Override: include 'comms:exempt' anywhere in the comment text"
   exit 0
 fi
@@ -64,7 +64,7 @@ emit_telemetry() {
 
 # Self-match: only fire on Notion comment creation (settings matcher should
 # already scope us, but stay safe if wired more broadly).
-if [ "$TOOL_NAME" != "mcp__notion__API_create_a_comment" ]; then
+if [ "$TOOL_NAME" != "mcp__notion__API_create_a_comment" ]; then  # skill-lint-allow-mcp
   exit 0
 fi
 

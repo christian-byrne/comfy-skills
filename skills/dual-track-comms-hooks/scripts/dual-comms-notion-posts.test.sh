@@ -37,7 +37,7 @@ decision() {
   echo "$1" | jq -r '.hookSpecificOutput.permissionDecision // ""'
 }
 
-TOOL="mcp__notion__API_create_a_comment"
+TOOL="mcp__notion__API_create_a_comment"  # skill-lint-allow-mcp
 LONG=$(printf 'long analysis line with plenty of detail. %.0s' {1..15})
 
 # 1. long comment → DENY
@@ -57,7 +57,7 @@ OUT=$(run "$TOOL" "$LONG comms:exempt")
 assert "honors comms:exempt override" "" "$OUT"
 
 # 5. other tool name → silent ALLOW
-OUT=$(run "mcp__notion__API_retrieve_a_page" "$LONG")
+OUT=$(run "mcp__notion__API_retrieve_a_page" "$LONG")  # skill-lint-allow-mcp
 assert "ignores non-comment Notion tools" "" "$OUT"
 
 # 6. empty rich_text → ALLOW
@@ -65,7 +65,7 @@ OUT=$(jq -cn --arg t "$TOOL" '{tool_name:$t, tool_input:{parent:{page_id:"p1"}, 
 assert "allows empty rich_text" "" "$OUT"
 
 # 7. malformed input → fail-open ALLOW
-OUT=$(echo '{"tool_name":"mcp__notion__API_create_a_comment"}' | bash "$HOOK")
+OUT=$(echo '{"tool_name":"mcp__notion__API_create_a_comment"}' | bash "$HOOK")  # skill-lint-allow-mcp
 assert "fails open on missing tool_input" "" "$OUT"
 
 # 8. telemetry — denied rows recorded

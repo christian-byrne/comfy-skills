@@ -69,8 +69,9 @@ GitHub/Slack/Linear dialects, converting `+++` ↔ `<details>` and degrading saf
 ## Enforcement Hooks (optional)
 
 Mechanical enforcement exists as a separate one-time-setup skill:
-`dual-track-comms-hooks` (tools.comfy.org/t/dual-track-comms-hooks). It installs two
-advisory Claude Code PreToolUse hooks that check GitHub, Linear, Slack, and Notion posts
+`dual-track-comms-hooks` (tools.comfy.org/t/dual-track-comms-hooks). It discovers your
+harness and posting tools, then installs advisory checks (Claude Code hooks, Amp
+plugins, or the closest equivalent) that vet GitHub, Linear, Slack, and Notion posts
 against this format before they go out. Once installed, this skill does not need to be
 loaded for the format to be enforced.
 
