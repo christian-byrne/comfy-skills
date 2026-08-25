@@ -1,0 +1,101 @@
+# Signal thresholds — program-workspace copy.
+# Generic template lives in ttp (skills/post-release/signal-translation/).
+# Copy into the program workspace and fill with real numbers before the rollout starts.
+# Every threshold change is a reviewed diff, not a Slack agreement.
+
+release: '<version, e.g. 1.53>'
+rollout_stage: '<nightly|canary|flag-cohort|full>'
+updated: '<ISO date>'
+approver: '<named human who signed off on these numbers>'
+
+signals:
+  - id: frontend-error-count
+    source: '<RUM/error-tracker dashboard ref>'
+    owner: '<named reader>'
+    baseline:
+      value: 0 # e.g. 2660
+      spread: 0 # e.g. 260 (1 sigma or observed range)
+      window: '<e.g. 14 days pre-rollout>'
+    bands:
+      watch: # e.g. > baseline + 2*spread
+        level: 0
+        sustain: '1 day'
+      stop: # e.g. > 3500/day
+        level: 0
+        sustain: '2 days'
+      rollback: # e.g. any data-loss signature
+        level: 0
+        sustain: 'immediate'
+    segment_by_version: true
+
+  - id: crash-signature-new
+    source: '<error tracker>'
+    owner: '<named>'
+    baseline:
+      value: 0
+      spread: 0
+      window: 'n/a — any NEW signature counts'
+    bands:
+      watch:
+        level: '1 new signature, <10 users'
+        sustain: 'immediate'
+      stop:
+        level: 'new signature, >=10 users or rising'
+        sustain: 'immediate'
+      rollback:
+        level: 'data loss / security signature'
+        sustain: 'immediate'
+
+  - id: community-report-cluster
+    source: 'GitHub issues + Discord + Reddit (see signal-ingest)'
+    owner: '<named triager>'
+    baseline:
+      value: 0
+      spread: 0
+      window: 'reports/week attributed to prior release'
+    bands:
+      watch:
+        level: '2+ independent reports, same symptom'
+        sustain: 'immediate'
+      stop:
+        level: '5+ independent reports or 1 with confirmed data loss'
+        sustain: 'immediate'
+      rollback:
+        level: 'widespread unrecoverable breakage'
+        sustain: 'immediate'
+
+  - id: compat-matrix-regression
+    source: '<ecosystem compat harness>'
+    owner: '<named>'
+    baseline:
+      value: 'control-branch pass rate'
+      spread: 0
+      window: 'same harness ref (pin exact ref)'
+    bands:
+      watch:
+        level: 'any diff vs control'
+        sustain: 'immediate'
+      stop:
+        level: 'curated/supported subset regressed'
+        sustain: 'immediate'
+      rollback:
+        level: 'n/a (pre-release gate, blocks promote instead)'
+        sustain: ''
+
+  - id: product-funnel-delta
+    source: '<product analytics>'
+    owner: '<named>'
+    baseline:
+      value: 0
+      spread: 0
+      window: '<e.g. 28-day funnel conversion>'
+    bands:
+      watch:
+        level: '-10% vs baseline'
+        sustain: '3 days'
+      stop:
+        level: '-25% vs baseline'
+        sustain: '2 days'
+      rollback:
+        level: 'funnel fully broken (0 conversions)'
+        sustain: '1 day'

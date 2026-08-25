@@ -118,6 +118,11 @@
     "listing_url": "/t/comfyui-frontend",
     "path": "skills/repo-knowledge/comfyui-frontend"
   },
+  "community-testers": {
+    "hash": "d5e3718b8845f617e0f4c75bfc582f2b32f8c85295ec2766194137a0c476b619",
+    "listing_url": "/t/community-testers",
+    "path": "skills/post-release/community-testers"
+  },
   "content-strategy": {
     "hash": "e7e75a091bb918df75fbf18bf13ba546435859d3b5268586b28c568b6aa22d74",
     "listing_url": "/t/content-strategy",
@@ -177,6 +182,11 @@
     "hash": "62fc2be8f1f1cf09bdaa0bda7441c7e43c1159497783788dcbd6130031964a09",
     "listing_url": "/t/excalidraw",
     "path": "skills/excalidraw"
+  },
+  "explainer-primer": {
+    "hash": "9dcaf411ab5eebee7361ebb9f35ed9b618f85fb7fa2f631b08d24e1fdccc256a",
+    "listing_url": "/t/explainer-primer",
+    "path": "skills/explainer-primer"
   },
   "final-sweep": {
     "hash": "f28ef231c54140bcdf7855da6aed688a5b769ec87ed9977ee95787080b848737",
@@ -343,6 +353,16 @@
     "listing_url": "/t/sales-enablement",
     "path": "skills/marketing/sub-skills/sales-enablement"
   },
+  "signal-ingest": {
+    "hash": "d439ded6394f679a2ecaa4f2e09d66953da8694cf19cb3eb90de04dc9d1710fd",
+    "listing_url": "/t/signal-ingest",
+    "path": "skills/post-release/signal-ingest"
+  },
+  "signal-translation": {
+    "hash": "bf309e88aaca1926a1e9ee69bf1d52ff686980fd622fae83793db73e92440abc",
+    "listing_url": "/t/signal-translation",
+    "path": "skills/post-release/signal-translation"
+  },
   "signup-flow-cro": {
     "hash": "34ca3b8021a9b5b974fa087f98072d1dc48402b78d85bdd24f4372eafd63e38d",
     "listing_url": "/t/signup-flow-cro",
@@ -367,6 +387,16 @@
     "hash": "353690f670945d1aab62d237b9b0611a01238cb0c1530b3a54df4449bf9d2ced",
     "listing_url": "/t/spec-driven-development",
     "path": "skills/spec-driven-development"
+  },
+  "staged-rollout": {
+    "hash": "4d26fb28b30c0dfa1148ebe0bb3560235d19c4a80c0db13770b702cb06fe1d26",
+    "listing_url": "/t/staged-rollout",
+    "path": "skills/post-release/staged-rollout"
+  },
+  "stakeholder-comms": {
+    "hash": "ba97e385e788ccd6fdb8ddb170db78672fad2dcc6518ac44f30bcf69e1109845",
+    "listing_url": "/t/stakeholder-comms",
+    "path": "skills/stakeholder-comms"
   },
   "systematic-debugging": {
     "hash": "099ee2264018662bae3331690fcffd752c27cff72596beef30e539d282b0bf9f",
