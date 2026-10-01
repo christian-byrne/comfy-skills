@@ -9,6 +9,11 @@
     "listing_url": "https://tools.comfy.org/t/agent-browser",
     "path": "skills/agent-browser"
   },
+  "agent-collaboration-channel": {
+    "hash": "e878cfbcefd204b2cc5faa003a03e7d23626b495e5b8f6b00646e82d7e0e12f3",
+    "listing_url": "/t/agent-collaboration-channel",
+    "path": "skills/agent-collaboration-channel"
+  },
   "agent-web-audit": {
     "hash": "004c4839aca92737cf3c43734e1892ebdf2eea13ecd83e3d9044b89e5f503c9c",
     "path": "skills/agent-web-audit"
