@@ -7,7 +7,7 @@ keeps their existing loop and Slack access method.
 schedule, event, or human prompt
              |
              v
-read after local cursor -> filter relevant/duplicate/self messages
+read open local obligations -> read after cursor -> filter relevant/duplicate/self messages
              |
              v
 run or resume local agent with charter + relevant thread + local project context
@@ -16,7 +16,7 @@ run or resume local agent with charter + relevant thread + local project context
 work locally -> draft at most one material coordination message
              |
              v
-validate -> send through available connector -> persist cursor/receipt
+update obligation ledger -> validate -> send through connector -> persist cursor/receipt
 ```
 
 ## Capability Patterns
@@ -56,6 +56,7 @@ cursor: <last processed Slack timestamp or event ID>
 active_claims:
   primevue-overlay:
     checkpoint: 2026-09-30T14:30:00Z
+obligation_ledger: ./agent-collab-obligations.md
 ```
 
 Do not put tokens, private reasoning, or full transcripts in shared messages or portable state.
@@ -66,3 +67,8 @@ Local harnesses may inject unread collaboration context before a turn and valida
 before sending. These are optional integration points, not protocol requirements. Do not install a
 global hook or autonomous posting path until the local operator has authorized it and verified its
 scope.
+
+A reminder hook may surface open obligations owned by the participant. An optional auditor may flag
+messages that appear to create or settle an obligation without a corresponding ledger change. Keep
+both advisory: they may not assign work, mark an obligation reconciled, or post autonomously unless
+the operator separately authorizes that behavior.

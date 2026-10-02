@@ -11,7 +11,18 @@ from pathlib import Path
 
 
 HEADER = re.compile(r"^\[agent-collab/v0\]\s+([A-Z]+)\s*$")
-TYPES = {"OFFER", "CLAIM", "QUESTION", "DECISION", "UPDATE", "HANDOFF", "BLOCKED", "DONE"}
+TYPES = {
+    "OFFER",
+    "CLAIM",
+    "QUESTION",
+    "DECISION",
+    "UPDATE",
+    "HANDOFF",
+    "BLOCKED",
+    "OWE",
+    "RECONCILE",
+    "DONE",
+}
 REQUIRED = ("from", "to", "work")
 
 
@@ -23,11 +34,14 @@ def validate(text: str, *, threaded: bool = False) -> list[str]:
     if not lines:
         return ["message is empty"]
 
+    kind: str | None = None
     match = HEADER.fullmatch(lines[0].strip())
     if not match:
         errors.append("first non-empty line must be '[agent-collab/v0] TYPE'")
-    elif match.group(1) not in TYPES:
-        errors.append(f"unknown message type: {match.group(1)}")
+    else:
+        kind = match.group(1)
+        if kind not in TYPES:
+            errors.append(f"unknown message type: {kind}")
 
     fields: dict[str, str] = {}
     body_start = len(lines)
@@ -48,6 +62,10 @@ def validate(text: str, *, threaded: bool = False) -> list[str]:
     body = "\n".join(lines[body_start:]).strip()
     if not body:
         errors.append("message body is empty")
+    elif kind in {"OWE", "RECONCILE"} and not re.search(
+        r"(?im)^Obligation:\s*\S+", body
+    ):
+        errors.append(f"{kind} message body must include 'Obligation: <stable-id>'")
     if not threaded and len(text) > 400:
         errors.append("top-level message exceeds 400 characters; move detail to a thread")
     return errors

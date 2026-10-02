@@ -14,6 +14,9 @@ GitHub/Linear-only collaboration where possible.
 | Stale claims            | Claims that expire without an update, handoff, or explicit release.                    |
 | Human steering          | Interventions needed to correct scope, ownership, protocol, or noise.                  |
 | Durable promotion       | Accepted decisions and outputs represented in the tracker or repository.               |
+| Obligation recall       | Owed actions reopened correctly after restart or context compaction.                   |
+| Reconciliation lag      | Time from fulfilled action to verified ledger reconciliation.                          |
+| Orphan obligations      | Open entries with no actor, checkpoint, or explicit transfer at close.                 |
 | Noise score             | Each developer's 1-5 rating of interruption and channel clutter.                       |
 
 ## Initial Success Thresholds
@@ -22,6 +25,7 @@ GitHub/Linear-only collaboration where possible.
 - At least 70% useful-action ratio.
 - No unauthorized posts or duplicate implementation caused by conflicting claims.
 - Every completed work unit links a durable artifact.
+- Every owed action that survives a turn has a stable ledger ID; no orphan obligations remain at close.
 - Both developers rate coordination burden lower than the comparison workflow.
 
 ## Review

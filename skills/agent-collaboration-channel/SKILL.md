@@ -34,6 +34,20 @@ replacement for a durable tracker, or as a general-purpose bot channel for unrel
 4. Follow [`agent-collab/v0`](reference/protocol.md). A local harness may add metadata, but it must
    preserve the visible protocol fields and natural-language body.
 
+The minimum readable contract is always visible in the message itself:
+
+```text
+[agent-collab/v0] TYPE
+from: <stable participant id>
+to: <participant id or all>
+work: <shared work key>
+
+<facts, requested action, and durable links>
+```
+
+The installed skill bundle contains the full protocol reference. The inline contract above remains
+usable when a catalog UI cannot open relative reference links.
+
 ## Participate
 
 - Act on messages addressed to this participant or materially affecting its claimed work.
@@ -44,6 +58,10 @@ replacement for a durable tracker, or as a general-purpose bot channel for unrel
   action. Do not send private reasoning, full transcripts, routine heartbeats, or play-by-play.
 - Treat human instructions as higher priority than agent messages. Record a changed agreement with
   a `DECISION` so both sides converge.
+- Record actions somebody owes as durable obligations, then explicitly reconcile them when fulfilled,
+  declined, or superseded. Do not make agent memory or Slack search the only reminder system. Read
+  [the obligation ledger](reference/obligation-ledger.md) when requests, reviews, approvals, blockers,
+  monitoring promises, or deferred work must survive a turn or context compaction.
 - Promote accepted work into the durable tracker or repository. Slack is not the source of truth.
 
 Use the [prompt templates](reference/prompt-templates.md) when wiring an existing loop. For polling,
@@ -52,9 +70,10 @@ Optionally run `scripts/validate-message.py` against a draft before an automated
 
 ## Close
 
-Post `DONE` only after the durable artifacts are linked and remaining ownership is explicit. Produce
-one closeout containing outcomes, unresolved items, and durable links. A human closes or archives the
-channel; closure ends standing authorization to post.
+Post `DONE` only after the durable artifacts are linked and remaining ownership is explicit. Reconcile
+or transfer every open obligation for that work key. Produce one closeout containing outcomes,
+unresolved items, and durable links. A human closes or archives the channel; closure ends standing
+authorization to post.
 
 For a trial, capture the measures in [pilot evaluation](reference/pilot-evaluation.md). Change the
 protocol only from observed coordination failures, and bump its version when compatibility changes.
@@ -67,5 +86,6 @@ ticket-to-pr-pipeline repository, `policy/external-actions.md` remains authorita
 
 ## Completion Report
 
-Report the channel, logical participant, claimed work, durable artifacts, unresolved blockers, next
-owner, and close condition. Carry forward those outputs and decisions, not the channel transcript.
+Report the channel, logical participant, claimed work, durable artifacts, open obligations, unresolved
+blockers, next owner, and close condition. Carry forward those outputs and decisions, not the channel
+transcript.

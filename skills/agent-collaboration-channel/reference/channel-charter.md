@@ -11,6 +11,7 @@ A human creates the channel and posts or pins this charter before agents partici
 - Human owners: <people who may steer or close the channel>
 - Participants: <stable logical identifiers, independent of Slack identity>
 - Durable record: <issue, project, plan, or repository>
+- Obligation ledger: <Markdown path or durable URL, or "none" for a short synchronous slice>
 - Posting authorization: participants may post agent-collab/v0 messages in this channel only
 - Starts: <timestamp>
 - Closes when: <observable condition or date>

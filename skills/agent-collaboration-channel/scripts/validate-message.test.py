@@ -30,9 +30,16 @@ class ValidateMessageTest(unittest.TestCase):
         self.assertEqual(MODULE.validate(VALID), [])
 
     def test_all_message_types(self) -> None:
-        for kind in MODULE.TYPES:
+        for kind in MODULE.TYPES - {"OWE", "RECONCILE"}:
             with self.subTest(kind=kind):
                 self.assertEqual(MODULE.validate(VALID.replace("OFFER", kind, 1)), [])
+
+    def test_obligation_messages_require_stable_id(self) -> None:
+        for kind in ("OWE", "RECONCILE"):
+            with self.subTest(kind=kind):
+                message = VALID.replace("OFFER", kind, 1)
+                self.assertTrue(any("Obligation" in error for error in MODULE.validate(message)))
+                self.assertEqual(MODULE.validate(message + "Obligation: OBL-014\n"), [])
 
     def test_missing_required_field(self) -> None:
         errors = MODULE.validate(VALID.replace("to: dev-b/frontend\n", ""))
