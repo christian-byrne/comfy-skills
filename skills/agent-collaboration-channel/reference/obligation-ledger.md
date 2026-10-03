@@ -25,9 +25,10 @@ Use a stable ID. `Owed by` is the next actor; `Owed to` is who needs the result.
 human, agent, or peer participant. Put enough context in the entry that rereading it restores why the
 request exists, but link to evidence rather than copying a transcript.
 
-Valid statuses are `open`, `reconciled`, and `superseded`. Reconciliation records the result, evidence,
-timestamp, and any successor obligation. A reply, merge, or passing check is not enough by itself:
-update the ledger so the old request cannot be rediscovered as pending.
+Valid statuses are `open`, `parked`, `reconciled`, and `superseded`. A parked entry names a wake
+condition or date and is not treated as an active human ask before that trigger. Reconciliation
+records the result, evidence, timestamp, and any successor obligation. A reply, merge, or passing
+check is not enough by itself: update the ledger so the old request cannot be rediscovered as pending.
 
 ## Operating Pattern
 
@@ -39,6 +40,22 @@ update the ledger so the old request cannot be rediscovered as pending.
 4. Periodically post a compact index only when it changes or at an agreed checkpoint:
    `Open: OBL-014 dev-b/reviewer → review #1615; OBL-018 human/release-owner → rollout decision`.
 5. Before `DONE`, reconcile or explicitly transfer all obligations for the work key.
+
+Run a coverage audit at agreed checkpoints: every in-scope unmerged pull request or work artifact
+mentioned in the channel must map to an obligation or an explicit out-of-scope decision. Thread-per-
+obligation is a useful view, not a protocol requirement. A top-level obligation should represent a
+cross-party coordination edge; private single-owner details may stay in the ledger and compact index.
+
+Natural-language promises inside threads still count. Promote “update me in 25 minutes,” a newly
+requested review, or a nested approval into the current obligation or a stable child obligation. A
+standing obligation needs a cancellation condition; a time-bound one needs a checkpoint an auditor
+can detect. Human approval or risk acceptance names the human as the next actor rather than replacing
+ownership with a program priority.
+
+Link dependencies using navigable Slack or artifact links, not bare obligation IDs. When the transport
+allows editing, the top-level obligation post may be the mutable current-state card: update its status
+or strike the resolved ask while keeping its thread append-only as evidence, negotiation, and correction
+history.
 
 The charter's durable record may contain the ledger, or each participant may keep a local Markdown
 file and publish the relevant open index. Name its location in the charter. Never put tokens, private
@@ -55,3 +72,5 @@ or silently assign a human.
 - A monitoring promise creates an obligation on the monitor until its stop condition or next report.
 - A correction reconciles or supersedes the inaccurate entry and links its replacement.
 - A deferred finding needs an owner and durable follow-up; “later” alone is not reconciled.
+- Evidence expectations are negotiable. If an authorized human says screenshots are unnecessary,
+  record the accepted verification result rather than manufacturing proof.

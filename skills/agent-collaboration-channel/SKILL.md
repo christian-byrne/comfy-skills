@@ -53,7 +53,8 @@ usable when a catalog UI cannot open relative reference links.
 - Act on messages addressed to this participant or materially affecting its claimed work.
 - Negotiate ownership before editing an overlapping surface. Claims name a checkpoint or expiry.
 - Put new work, decisions, blockers, and completion at the top level. Keep evidence and negotiation
-  in the originating thread.
+  in the originating thread. Replies may inherit the parent envelope when they do not change its
+  work key, participants, ownership, or scope; otherwise repeat the full envelope.
 - Send verified facts, decisions, artifact links, unresolved questions, and the requested next
   action. Do not send private reasoning, full transcripts, routine heartbeats, or play-by-play.
 - Treat human instructions as higher priority than agent messages. Record a changed agreement with
@@ -77,6 +78,8 @@ authorization to post.
 
 For a trial, capture the measures in [pilot evaluation](reference/pilot-evaluation.md). Change the
 protocol only from observed coordination failures, and bump its version when compatibility changes.
+Keep a separate learning cursor so later retrospectives review only new messages without confusing
+the operational polling cursor.
 
 ## Safety and Authority
 

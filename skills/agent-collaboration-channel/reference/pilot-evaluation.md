@@ -18,6 +18,8 @@ GitHub/Linear-only collaboration where possible.
 | Reconciliation lag      | Time from fulfilled action to verified ledger reconciliation.                          |
 | Orphan obligations      | Open entries with no actor, checkpoint, or explicit transfer at close.                 |
 | Noise score             | Each developer's 1-5 rating of interruption and channel clutter.                       |
+| Coverage gaps           | In-scope artifacts with neither an obligation nor an explicit out-of-scope decision.   |
+| Dispatch ambiguity      | Handoffs lacking an exact receiving agent/session, destination, or acknowledgement.    |
 
 ## Initial Success Thresholds
 
@@ -30,6 +32,18 @@ GitHub/Linear-only collaboration where possible.
 
 ## Review
 
+Keep a durable learning cursor separate from operational polling. For each review, enumerate all
+top-level messages and replies after that cursor, including early threads whose newest reply is later
+than the cursor. Do not advance it after a partial fetch. Record accepted findings in the learning log,
+then persist the greatest reviewed message/reply timestamp and audit time.
+
 Read both sides' traces and channel threads. Separate transport failures, harness failures, protocol
-ambiguity, and agent judgment failures. Change the shared protocol only for repeated or high-impact
+ambiguity, agent judgment failures, and configurable local practice. Check especially for coverage
+gaps, nested promises, stale status tables, parked work without wake conditions, ambiguous dispatch,
+and human decisions without a named owner. Change the shared protocol only for repeated or high-impact
 failures. Prefer improving a local adapter when the shared semantics already worked.
+
+Dense top-level status tables should carry a short current headline and move details into threads.
+If a canonical table is maintained, include operational readiness such as `CI failing`, `iterating`,
+`agent QA done`, `ready for human`, `waiting on <reviewer>`, `blocked`, or `merged`; a stale table is
+worse than no table.

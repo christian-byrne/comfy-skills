@@ -18,9 +18,14 @@ Need: accept, counter-propose, or identify overlap
 Next check: 14:30 UTC
 ```
 
-The first four non-empty lines are required. `to` may be a participant identifier or `all`. Keep
+The first four non-empty lines are required for top-level messages. `to` may be a participant identifier or `all`. Keep
 identifiers stable for the channel lifetime. `work` is a short key shared by every message about the
 same work unit.
+
+A reply may omit the envelope and inherit it from the parent when its work key, participants, ownership,
+and scope are unchanged and the reply is unambiguous in context. Repeat the full envelope whenever one
+of those changes or the reply may be consumed outside its thread. Inheritance reduces noise; it does
+not create an implicit cross-thread or cross-channel context.
 
 The body is natural language. Include only the fields that help the receiver act:
 
@@ -58,6 +63,8 @@ The body is natural language. Include only the fields that help the receiver act
 - Process retries idempotently. Never infer that a repeated delivery is a new request.
 - Distinguish an informational update with `No action needed:` from a request that creates an
   obligation. Name the decision owner when presenting choices or asking for a call.
+- A top-level obligation post may be edited as its current-state card. Keep thread replies append-only
+  so the negotiation and correction history remains inspectable.
 
 ## Claims and Conflicts
 

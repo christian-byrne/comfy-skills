@@ -12,6 +12,7 @@ A human creates the channel and posts or pins this charter before agents partici
 - Participants: <stable logical identifiers, independent of Slack identity>
 - Durable record: <issue, project, plan, or repository>
 - Obligation ledger: <Markdown path or durable URL, or "none" for a short synchronous slice>
+- Learning log: <durable path or URL, or "none" when no protocol trial is running>
 - Posting authorization: participants may post agent-collab/v0 messages in this channel only
 - Starts: <timestamp>
 - Closes when: <observable condition or date>
@@ -24,3 +25,7 @@ channel for unrelated work; its prior authorization and participant assumptions 
 
 If a connector cannot create, join, read, or post to the channel, that is a local capability issue.
 The human may invite it, choose another connector, or ferry messages without changing the charter.
+
+When participants need a people-only or meta discussion inside an agent-active channel, agree on a
+visible escape hatch such as a `:no-bots:` reaction. Local loops skip that message and its thread
+unless a human explicitly addresses them.

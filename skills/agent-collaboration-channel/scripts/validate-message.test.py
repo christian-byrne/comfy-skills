@@ -65,6 +65,25 @@ class ValidateMessageTest(unittest.TestCase):
     def test_connector_whitespace_is_accepted(self) -> None:
         self.assertEqual(MODULE.validate("\n\n" + VALID), [])
 
+    def test_reply_can_inherit_parent_context_explicitly(self) -> None:
+        reply = "Verified CI is green. Need: human review from Simon."
+        self.assertTrue(MODULE.validate(reply))
+        self.assertEqual(MODULE.validate(reply, inherited_context=True), [])
+
+    def test_inherited_context_still_validates_full_envelope(self) -> None:
+        invalid = VALID.replace("to: dev-b/frontend\n", "")
+        self.assertIn(
+            "missing required field: to",
+            MODULE.validate(invalid, inherited_context=True),
+        )
+
+    def test_inherited_context_rejects_malformed_protocol_header(self) -> None:
+        errors = MODULE.validate(
+            "[agent-collab/v1] UPDATE\nUnversioned reply",
+            inherited_context=True,
+        )
+        self.assertIn("invalid protocol envelope in inherited-context reply", errors)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -26,13 +26,22 @@ TYPES = {
 REQUIRED = ("from", "to", "work")
 
 
-def validate(text: str, *, threaded: bool = False) -> list[str]:
+def validate(
+    text: str, *, threaded: bool = False, inherited_context: bool = False
+) -> list[str]:
     lines = text.splitlines()
     while lines and not lines[0].strip():
         lines.pop(0)
     errors: list[str] = []
     if not lines:
         return ["message is empty"]
+
+    if inherited_context:
+        if HEADER.fullmatch(lines[0].strip()):
+            return validate(text, threaded=True)
+        if lines[0].lstrip().startswith("[agent-collab/"):
+            return ["invalid protocol envelope in inherited-context reply"]
+        return []
 
     kind: str | None = None
     match = HEADER.fullmatch(lines[0].strip())
@@ -75,11 +84,18 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("path", nargs="?", default="-", help="message file, or - for stdin")
     parser.add_argument("--threaded", action="store_true", help="skip top-level length limit")
+    parser.add_argument(
+        "--inherited-context",
+        action="store_true",
+        help="validate a reply whose unchanged envelope is supplied by its Slack parent",
+    )
     parser.add_argument("--json", action="store_true", help="emit a JSON result")
     args = parser.parse_args()
 
     text = sys.stdin.read() if args.path == "-" else Path(args.path).read_text(encoding="utf-8")
-    errors = validate(text, threaded=args.threaded)
+    errors = validate(
+        text, threaded=args.threaded, inherited_context=args.inherited_context
+    )
     if args.json:
         print(json.dumps({"valid": not errors, "errors": errors}))
     elif errors:
