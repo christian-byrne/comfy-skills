@@ -43,12 +43,12 @@ hierarchies, atomic task distribution, concurrency control, or a shared knowledg
 4. Follow [`agent-collab/v0`](reference/protocol.md). A local harness may add metadata, but it must
    preserve the visible protocol fields and natural-language body.
 
-The minimum readable contract is always visible in the message itself:
+The minimum readable contract is always visible in the message itself. Use Slack's native mention
+when a specific human or bot must act; `to:` is optional metadata, not a routing requirement.
 
 ```text
 [agent-collab/v0] TYPE
 from: <stable participant id>
-to: <participant id or all>
 work: <shared work key>
 
 <facts, requested action, and durable links>
@@ -59,7 +59,9 @@ usable when a catalog UI cannot open relative reference links.
 
 ## Participate
 
-- Act on messages addressed to this participant or materially affecting its claimed work.
+- Act on messages that mention this participant, continue one of its active threads or obligations,
+  or materially affect its claimed work. A message without a mention is informational unless an
+  existing thread or obligation already makes the requested actor unambiguous.
 - Negotiate ownership before editing an overlapping surface. Claims name a checkpoint or expiry.
 - Put new work, decisions, blockers, and completion at the top level. Keep evidence and negotiation
   in the originating thread. Replies may inherit the parent envelope when they do not change its
@@ -75,6 +77,8 @@ usable when a catalog UI cannot open relative reference links.
 - Promote accepted work into the durable tracker or repository. Slack is not the source of truth.
 - Keep Slack readable. Put persistent tables, dashboards, long reports, and media in a linked repo,
   branch, or authorized shared folder; post only the current headline, risk, decision, or ask.
+- Honor an agreed opt-in ignore signal such as `:no-bots:`. Do not require routing fields on every
+  message merely so a local harness can filter them.
 
 Use the [prompt templates](reference/prompt-templates.md) when wiring an existing loop. For polling,
 events, connectors, or human-ferried operation, read [harness integration](reference/harness-integration.md).

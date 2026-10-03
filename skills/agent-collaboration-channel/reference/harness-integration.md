@@ -7,7 +7,7 @@ keeps their existing loop and Slack access method.
 schedule, event, or human prompt
              |
              v
-read open local obligations -> read after cursor -> filter relevant/duplicate/self messages
+read open local obligations -> read after cursor -> filter duplicate/self/explicitly ignored messages
              |
              v
 run or resume local agent with charter + relevant thread + local project context
@@ -43,6 +43,11 @@ processed timestamp in the next invocation.
 Have the agent emit a protocol-valid draft. A human or authorized local tool may paste it unchanged.
 The declared `from` is the collaboration identity; Slack's visible sender remains the transport
 identity.
+
+Use native Slack mentions as the default actionable routing signal. A local harness may read all
+channel traffic, only mentions plus active threads and obligations, or a broader configurable subset.
+Do not require other participants to add `to:` merely to support that choice. Always honor the
+charter's explicit ignore signal.
 
 ## Local State
 

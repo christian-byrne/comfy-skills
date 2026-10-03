@@ -10,19 +10,28 @@ local agent system.
 ```text
 [agent-collab/v0] OFFER
 from: dev-a/frontend
-to: dev-b/frontend
 work: primevue-overlay
 
-I can own Dialog wrappers if you take Select and Popover.
+<@SLACK_USER_ID> I can own Dialog wrappers if you take Select and Popover.
 
 Evidence: <links or verified facts>
 Need: accept, counter-propose, or identify overlap
 Next check: 14:30 UTC
 ```
 
-The first four non-empty lines are required for top-level messages. `to` may be a participant identifier or `all`. Keep
+The header, `from`, and `work` are required for top-level protocol messages. Keep participant
 identifiers stable for the channel lifetime. `work` is a short key shared by every message about the
-same work unit.
+same work unit. `to:` is optional local metadata and must not replace a native Slack mention when a
+specific human or bot must act.
+
+A compact top-level envelope is also valid when it remains readable:
+
+```text
+[agent-collab/v0] OWE · dev-a/frontend · primevue-overlay
+```
+
+The compact fields are `TYPE · from · work`. Put the natural-language body below it. Existing
+multiline envelopes remain valid.
 
 A reply may omit the envelope and inherit it from the parent when its work key, participants, ownership,
 and scope are unchanged and the reply is unambiguous in context. Repeat the full envelope whenever one
@@ -39,6 +48,8 @@ The body is natural language. Include only the fields that help the receiver act
 - `Obligation:` stable ledger ID for an owed action or its reconciliation.
 - `Decision owner:` human or participant whose call is required.
 - `No action needed:` explicitly marks an informational update.
+- `x-<owner>-<name>:` optional namespaced metadata for one participant's harness. Other participants
+  ignore unknown extensions. An extension never replaces required prose or shared fields.
 
 ## Message Types
 
@@ -61,12 +72,21 @@ The body is natural language. Include only the fields that help the receiver act
 - Reply in its thread for negotiation, evidence, and corrections.
 - Keep a top-level message at or below 400 characters when practical; put detail in its thread.
 - Do not respond to a message whose `from` matches the local participant unless explicitly testing.
+- Use a native `@mention` when a specific human or bot must act. If one Slack bot hosts several
+  agents, suffix the mention with the local agent name or ID when needed, for example
+  `<@BOT_ID>:agent-reviewer`.
+- Treat an unmentioned top-level post as informational unless it updates an existing claim or
+  obligation owned by the participant. Agents may still batch-read informational traffic.
+- Honor the charter's explicit ignore signal, such as `:no-bots:`. Filtering beyond that is a local
+  harness choice, not a shared protocol rule.
 - Use Slack's message timestamp or Events API `event_id` as the delivery deduplication key.
 - Process retries idempotently. Never infer that a repeated delivery is a new request.
 - Distinguish an informational update with `No action needed:` from a request that creates an
   obligation. Name the decision owner when presenting choices or asking for a call.
 - A top-level obligation post may be edited as its current-state card. Keep thread replies append-only
   so the negotiation and correction history remains inspectable.
+- Plain non-protocol status posts are allowed when the charter authorizes them. They create no claim,
+  obligation, or required response. Marking or filtering those posts is a local choice.
 
 ## Claims and Conflicts
 
@@ -89,8 +109,11 @@ headline plus the human ask.
 
 ## Obligations and Reconciliation
 
-Use `OWE` when a requested or promised action must survive the current turn. Include `Obligation:`,
-the next actor, requested outcome, context, evidence, and due time or checkpoint in the durable ledger.
+Use `OWE` in the shared channel when a cross-developer requested or promised action must survive the
+current turn. Within one developer's swarm, `OWE` messages are optional local visibility. Include
+`Obligation:`, the next actor, requested outcome, context, evidence, and due time or checkpoint in the
+durable ledger. The channel message must remain actionable even when the receiver cannot open the
+sender's ledger.
 Use `RECONCILE` only after rereading that entry and verifying the result. Link the result and name any
 successor obligation. See [the ledger format](obligation-ledger.md).
 

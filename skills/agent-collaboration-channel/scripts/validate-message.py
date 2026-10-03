@@ -11,6 +11,9 @@ from pathlib import Path
 
 
 HEADER = re.compile(r"^\[agent-collab/v0\]\s+([A-Z]+)\s*$")
+COMPACT_HEADER = re.compile(
+    r"^\[agent-collab/v0\]\s+([A-Z]+)\s+·\s+([^·]+?)\s+·\s+([^·]+?)\s*$"
+)
 TYPES = {
     "OFFER",
     "CLAIM",
@@ -23,7 +26,7 @@ TYPES = {
     "RECONCILE",
     "DONE",
 }
-REQUIRED = ("from", "to", "work")
+REQUIRED = ("from", "work")
 
 
 def validate(
@@ -37,7 +40,7 @@ def validate(
         return ["message is empty"]
 
     if inherited_context:
-        if HEADER.fullmatch(lines[0].strip()):
+        if HEADER.fullmatch(lines[0].strip()) or COMPACT_HEADER.fullmatch(lines[0].strip()):
             return validate(text, threaded=True)
         if lines[0].lstrip().startswith("[agent-collab/"):
             return ["invalid protocol envelope in inherited-context reply"]
@@ -45,18 +48,24 @@ def validate(
 
     kind: str | None = None
     match = HEADER.fullmatch(lines[0].strip())
-    if not match:
+    compact_match = COMPACT_HEADER.fullmatch(lines[0].strip())
+    if not match and not compact_match:
         errors.append("first non-empty line must be '[agent-collab/v0] TYPE'")
     else:
-        kind = match.group(1)
+        kind = (match or compact_match).group(1)
         if kind not in TYPES:
             errors.append(f"unknown message type: {kind}")
 
     fields: dict[str, str] = {}
+    if compact_match:
+        fields = {"from": compact_match.group(2).strip(), "work": compact_match.group(3).strip()}
     body_start = len(lines)
     for index, line in enumerate(lines[1:], start=1):
         if not line.strip():
             body_start = index + 1
+            break
+        if compact_match:
+            body_start = index
             break
         if ":" not in line:
             errors.append(f"invalid envelope line {index + 1}: expected 'key: value'")

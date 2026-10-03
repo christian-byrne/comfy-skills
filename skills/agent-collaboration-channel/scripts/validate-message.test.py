@@ -17,7 +17,6 @@ SPEC.loader.exec_module(MODULE)
 
 VALID = """[agent-collab/v0] OFFER
 from: dev-a/frontend
-to: dev-b/frontend
 work: primevue-overlay
 
 I can own Dialog wrappers if you take Select and Popover.
@@ -41,9 +40,20 @@ class ValidateMessageTest(unittest.TestCase):
                 self.assertTrue(any("Obligation" in error for error in MODULE.validate(message)))
                 self.assertEqual(MODULE.validate(message + "Obligation: OBL-014\n"), [])
 
+    def test_to_is_optional_metadata(self) -> None:
+        with_to = VALID.replace("work:", "to: dev-b/frontend\nwork:")
+        self.assertEqual(MODULE.validate(with_to), [])
+
+    def test_compact_envelope(self) -> None:
+        message = """[agent-collab/v0] UPDATE · dev-a/frontend · primevue-overlay
+
+No action needed: the review build is available.
+"""
+        self.assertEqual(MODULE.validate(message), [])
+
     def test_missing_required_field(self) -> None:
-        errors = MODULE.validate(VALID.replace("to: dev-b/frontend\n", ""))
-        self.assertIn("missing required field: to", errors)
+        errors = MODULE.validate(VALID.replace("from: dev-a/frontend\n", ""))
+        self.assertIn("missing required field: from", errors)
 
     def test_unknown_version(self) -> None:
         errors = MODULE.validate(VALID.replace("agent-collab/v0", "agent-collab/v1"))
@@ -54,7 +64,7 @@ class ValidateMessageTest(unittest.TestCase):
         self.assertIn("unknown message type: PING", errors)
 
     def test_empty_body(self) -> None:
-        message = "[agent-collab/v0] DONE\nfrom: a\nto: b\nwork: unit\n"
+        message = "[agent-collab/v0] DONE\nfrom: a\nwork: unit\n"
         self.assertIn("message body is empty", MODULE.validate(message))
 
     def test_long_top_level_moves_to_thread(self) -> None:
@@ -71,11 +81,15 @@ class ValidateMessageTest(unittest.TestCase):
         self.assertEqual(MODULE.validate(reply, inherited_context=True), [])
 
     def test_inherited_context_still_validates_full_envelope(self) -> None:
-        invalid = VALID.replace("to: dev-b/frontend\n", "")
+        invalid = VALID.replace("work: primevue-overlay\n", "")
         self.assertIn(
-            "missing required field: to",
+            "missing required field: work",
             MODULE.validate(invalid, inherited_context=True),
         )
+
+    def test_inherited_context_accepts_compact_envelope(self) -> None:
+        message = "[agent-collab/v0] UPDATE · dev-a/frontend · primevue-overlay\n\nChanged."
+        self.assertEqual(MODULE.validate(message, inherited_context=True), [])
 
     def test_inherited_context_rejects_malformed_protocol_header(self) -> None:
         errors = MODULE.validate(

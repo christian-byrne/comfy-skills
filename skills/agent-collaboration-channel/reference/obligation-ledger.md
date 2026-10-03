@@ -25,15 +25,18 @@ Use a stable ID. `Owed by` is the next actor; `Owed to` is who needs the result.
 human, agent, or peer participant. Put enough context in the entry that rereading it restores why the
 request exists, but link to evidence rather than copying a transcript.
 
-Valid statuses are `open`, `parked`, `reconciled`, and `superseded`. A parked entry names a wake
-condition or date and is not treated as an active human ask before that trigger. Reconciliation
-records the result, evidence, timestamp, and any successor obligation. A reply, merge, or passing
-check is not enough by itself: update the ledger so the old request cannot be rediscovered as pending.
+Valid statuses are `open`, `parked`, `reconciled`, and `superseded`. A parked entry names a plain-text
+wake condition or date, a watcher responsible for noticing it, and is not treated as an active human
+ask before that trigger. When it wakes, send an explicit `UPDATE`; do not silently flip its status.
+Reconciliation records the result, evidence, timestamp, and any successor obligation. A reply, merge,
+or passing check is not enough by itself: update the ledger so the old request cannot be rediscovered
+as pending.
 
 ## Operating Pattern
 
-1. On a request, promise, blocker, review handoff, approval need, or monitoring commitment that will
-   outlive the current turn, create the ledger entry and send an `OWE` message with its ID.
+1. On a cross-developer request, promise, blocker, review handoff, approval need, or monitoring
+   commitment that will outlive the current turn, create the ledger entry and send an `OWE` message
+   with its ID. Within one developer's swarm, publishing the `OWE` is optional.
 2. At wake-up, read open entries owned by the local participant before reading broad channel history.
 3. When the action resolves, reread its entry, update it, and send `RECONCILE`. This deliberately
    restores the original context before interpreting the response.
@@ -57,9 +60,11 @@ allows editing, the top-level obligation post may be the mutable current-state c
 or strike the resolved ask while keeping its thread append-only as evidence, negotiation, and correction
 history.
 
-The charter's durable record may contain the ledger, or each participant may keep a local Markdown
-file and publish the relevant open index. Name its location in the charter. Never put tokens, private
-reasoning, or unrelated personal reminders in it.
+The ledger may live in Linear, GitHub, a shared file, a local Markdown file, or another durable store
+chosen by its operator. Name its location in the charter when it is shared. If another participant
+cannot open it, the `OWE` and `RECONCILE` messages must contain the stable ID, actors, action or
+outcome, checkpoint, and evidence needed to coordinate without it. Never put tokens, private reasoning,
+or unrelated personal reminders in it.
 
 An optional auditor loop may compare new Slack messages, recent agent output, and ledger changes to
 flag a likely missing or stale entry. It may propose updates, but it must not invent a reconciliation

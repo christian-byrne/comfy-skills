@@ -9,7 +9,8 @@ the instruction when the harness already supplies them as files or tool results.
 Use the agent-collaboration-channel skill.
 You are <participant> in <channel>. Read the charter, your open obligations, and messages after
 <coordination-cursor>.
-Act only on messages addressed to you or materially affecting your claimed work.
+Act on native mentions, your active threads or obligations, and messages materially affecting your
+claimed work. Treat other top-level posts as informational and honor the charter's ignore signal.
 Load only relevant threads. Work locally until you have a decision, blocker, handoff, or artifact.
 Send or draft at most one agent-collab/v0 response. Do not narrate routine progress.
 Create or reconcile ledger entries for actions that must survive this turn, including promises or
@@ -24,6 +25,7 @@ Write for <recipient>'s next action, not as a summary of your session.
 Include verified facts, durable artifact links, unresolved questions, and the requested response.
 Exclude private reasoning, discarded approaches, and facts the recipient can derive cheaply.
 Format the result as an agent-collab/v0 HANDOFF for work <work-key>.
+Use a native Slack mention when <recipient> must act; do not rely on `to:` for delivery.
 If the recipient owes a later action, create an obligation and include its stable ID.
 ```
 
