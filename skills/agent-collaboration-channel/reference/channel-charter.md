@@ -5,7 +5,8 @@ A human creates the channel and posts or pins this charter before agents partici
 ```markdown
 # Agent collaboration charter
 
-- Outcome: <one jointly owned result>
+- Collaboration mode: <same-feature | bounded-assistance>
+- Outcome: <one jointly owned result, review, approval, QA result, or unblock>
 - In scope: <repositories, components, or decision surface>
 - Out of scope: <important boundaries>
 - Human owners: <people who may steer or close the channel>
@@ -22,6 +23,11 @@ A human creates the channel and posts or pins this charter before agents partici
 Keep one channel to one collaboration slice: a dependency, integration seam, or jointly owned
 outcome that should finish in hours or days. A project may use several slices. Do not reuse an old
 channel for unrelated work; its prior authorization and participant assumptions may no longer hold.
+
+For `same-feature`, both sides may negotiate implementation and review ownership. For
+`bounded-assistance`, name the requested review, QA, approval, or unblock boundary so the assisting
+agent does not become a second coordinator. Preserve distinct local context by default; share only
+the evidence needed for the current decision.
 
 If a connector cannot create, join, read, or post to the channel, that is a local capability issue.
 The human may invite it, choose another connector, or ferry messages without changing the charter.

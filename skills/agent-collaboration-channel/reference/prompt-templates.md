@@ -27,6 +27,15 @@ Format the result as an agent-collab/v0 HANDOFF for work <work-key>.
 If the recipient owes a later action, create an obligation and include its stable ID.
 ```
 
+## Adversarial Review
+
+```text
+Review <artifact> for <decision or approval> using your own local technical, product, and business
+context. Do not assume the originating agent has your knowledge. Return verified discrepancies,
+risks, unanswered questions, and the smallest actionable next step. Keep local reasoning private;
+link durable evidence. If nothing material is wrong, state the approval boundary explicitly.
+```
+
 ## Human Steering
 
 ```text

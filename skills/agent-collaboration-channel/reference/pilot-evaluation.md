@@ -20,6 +20,9 @@ GitHub/Linear-only collaboration where possible.
 | Noise score             | Each developer's 1-5 rating of interruption and channel clutter.                       |
 | Coverage gaps           | In-scope artifacts with neither an obligation nor an explicit out-of-scope decision.   |
 | Dispatch ambiguity      | Handoffs lacking an exact receiving agent/session, destination, or acknowledgement.    |
+| Review cycle time       | Time from review-ready to actionable feedback, approval, or merge.                     |
+| Cross-context catches   | Correctness issues found because the peer had different product or business context.   |
+| Human venue misses      | Decisions, blockers, risks, or questions emitted privately but not shown to the human. |
 
 ## Initial Success Thresholds
 
@@ -29,6 +32,9 @@ GitHub/Linear-only collaboration where possible.
 - Every completed work unit links a durable artifact.
 - Every owed action that survives a turn has a stable ledger ID; no orphan obligations remain at close.
 - Both developers rate coordination burden lower than the comparison workflow.
+- Review or approval moves faster than the comparison workflow without reducing correctness.
+- Record whether distinct local knowledge or independent test practice found an issue a shared
+  context would probably have missed.
 
 ## Review
 

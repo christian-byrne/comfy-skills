@@ -2,6 +2,8 @@
 
 The protocol is a thin, visible envelope around ordinary language. Slack supplies transport,
 timestamps, threading, and delivery identity; the envelope supplies stable meaning across harnesses.
+It coordinates cross-developer review and steering edges, not every task inside either developer's
+local agent system.
 
 ## Envelope
 
@@ -71,6 +73,19 @@ The body is natural language. Include only the fields that help the receiver act
 A claim is advisory coordination, not a lock. It must identify its surface and a checkpoint or
 expiry. Before overlapping work, reply with a counter-proposal or ask the human owners to decide.
 Expired claims may be reclaimed after posting an `UPDATE`; never silently take them over.
+
+## Review and Steering Boundary
+
+Use the channel for review-ready changes, actionable feedback, approval needs, adversarial findings,
+risks, blockers, open questions, and difficult decisions. Keep local implementation chatter and
+private sub-agent management on the owning developer's machine. A collaborator may approve the
+prompts, skills, QA expectations, or rollout threshold governing a result instead of manually
+approving every resulting pull request, when the humans explicitly agree to that arrangement.
+
+Preserve asymmetric context when it improves review: provide the artifact and decision needed, but
+do not automatically merge both developers' knowledge bases. Put persistent dashboards, large
+tables, long reports, and media in a durable linked artifact and keep Slack to a compact current
+headline plus the human ask.
 
 ## Obligations and Reconciliation
 

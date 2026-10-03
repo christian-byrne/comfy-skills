@@ -76,6 +76,13 @@ agent/session and destination, then wait for acknowledgement.
 
 A coordinator allocates work, preserves scope, and tracks completion. It should delegate substantive
 implementation, research, or QA when local capacity exists instead of becoming the default worker.
+An auditor or backstop reads coordinator turns and flags misses; it does not answer routine questions
+or become a parallel coordinator.
+
+Any decision, new issue, blocker, risk, or question requiring a human must reach the human-visible
+venue in the same turn. Terminal output and private agent state do not count as delivery. When human
+instruction crosses with an agent recommendation, the human instruction stands and the agent re-asks
+before acting on its conflicting recommendation.
 
 ## Optional Lifecycle Hooks
 
@@ -88,6 +95,10 @@ A reminder hook may surface open obligations owned by the participant. An option
 messages that appear to create or settle an obligation without a corresponding ledger change. Keep
 both advisory: they may not assign work, mark an obligation reconciled, or post autonomously unless
 the operator separately authorizes that behavior.
+
+Standing human rules need a durable record outside the model context. After compaction, compare the
+summary against that record before resuming. When an auditor raises a valid caveat that cannot change
+the decision, record `caveat accepted; action unchanged` once rather than reopening it indefinitely.
 
 Invoke the bundled validator with `python3 scripts/validate-message.py`; do not depend on copied files
 retaining their executable bit. Pass `--inherited-context` only for a Slack reply whose parent supplies

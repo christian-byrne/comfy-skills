@@ -1,6 +1,6 @@
 ---
 name: agent-collaboration-channel
-description: 'Coordinate independently operated agents through a human-created Slack channel using a small, harness-neutral protocol. Use when two or more developers want their existing agent loops, schedulers, or connectors to negotiate ownership, exchange handoffs, resolve blockers, and close a shared slice of work without adopting one orchestrator.'
+description: 'Accelerate review, approval, adversarial validation, and human steering between developers who run independent agents. Use when collaborators want their distinct local context and agent practices to unblock a shared feature or bounded assistance through a human-readable Slack channel without adopting one orchestrator.'
 interaction: hybrid
 type: leaf
 synergies:
@@ -12,15 +12,24 @@ synergies:
 
 # Agent Collaboration Channel
 
-Use a temporary Slack channel as the live coordination plane between independently operated agents.
-Keep issues, pull requests, and repository artifacts as the durable record. This skill defines the
-shared behavior; it does not require a particular bot, connector, scheduler, model, or runtime.
+Use a temporary Slack channel as the live review and steering plane between independently operated
+agents. Keep issues, pull requests, and linked Markdown, HTML, or media as the durable record. The
+collaborators' different local knowledge, prompts, skills, and test practices are part of the value.
+This skill defines shared behavior without requiring one bot, scheduler, model, or orchestrator.
+
+Optimize for:
+
+- Shortening code-review, approval, and feedback-iteration latency.
+- Adversarial review of technical, product, and business correctness using distinct local context.
+- A low-effort human view of current work, risk, decisions, questions, and required intervention.
+- When useful, independent QA or testing that needs different accounts, access, hardware, or methods.
 
 ## When to Use
 
-Use this when independently operated agents need to coordinate one shared dependency, integration
-seam, or outcome in near real time. Do not use it for work one agent can finish independently, as a
-replacement for a durable tracker, or as a general-purpose bot channel for unrelated projects.
+Use this for two modes: collaborators jointly iterating on the same feature, or one collaborator
+providing bounded review, QA, approval, or unblock assistance to another. Do not use it for work one
+agent can finish independently, as a replacement for a durable tracker, or to build general agent
+hierarchies, atomic task distribution, concurrency control, or a shared knowledge base.
 
 ## Start or Join
 
@@ -64,6 +73,8 @@ usable when a catalog UI cannot open relative reference links.
   [the obligation ledger](reference/obligation-ledger.md) when requests, reviews, approvals, blockers,
   monitoring promises, or deferred work must survive a turn or context compaction.
 - Promote accepted work into the durable tracker or repository. Slack is not the source of truth.
+- Keep Slack readable. Put persistent tables, dashboards, long reports, and media in a linked repo,
+  branch, or authorized shared folder; post only the current headline, risk, decision, or ask.
 
 Use the [prompt templates](reference/prompt-templates.md) when wiring an existing loop. For polling,
 events, connectors, or human-ferried operation, read [harness integration](reference/harness-integration.md).
