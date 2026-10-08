@@ -373,6 +373,10 @@
     "listing_url": "/t/signal-ingest",
     "path": "skills/post-release/signal-ingest"
   },
+  "signal-reporting": {
+    "hash": "6a73232a6dc2952f377a109a882d95458cb52210be174b020f6d7ef49a1f5db8",
+    "path": "skills/signal-reporting"
+  },
   "signal-translation": {
     "hash": "bf309e88aaca1926a1e9ee69bf1d52ff686980fd622fae83793db73e92440abc",
     "listing_url": "/t/signal-translation",
