@@ -51,6 +51,11 @@ The body is natural language. Include only the fields that help the receiver act
 - `x-<owner>-<name>:` optional namespaced metadata for one participant's harness. Other participants
   ignore unknown extensions. An extension never replaces required prose or shared fields.
 
+Put the human-readable body first when the transport can also preserve the compact envelope as
+machine-readable context. Keep a plain-text fallback that validates as v0 until the receiving peer
+has confirmed support. Capability state is per peer and reversible; a stale capability record must
+degrade to the readable fallback rather than drop or reinterpret the message.
+
 ## Message Types
 
 | Type        | Use                                                               |
@@ -78,7 +83,8 @@ The body is natural language. Include only the fields that help the receiver act
 - Treat an unmentioned top-level post as informational unless it updates an existing claim or
   obligation owned by the participant. Agents may still batch-read informational traffic.
 - Honor the charter's explicit ignore signal, such as `:no-bots:`. Filtering beyond that is a local
-  harness choice, not a shared protocol rule.
+  harness choice, not a shared protocol rule. Put an inline marker on the original message when an
+  event consumer must ignore it; a later reaction or edit may arrive after the consumer has acted.
 - Use Slack's message timestamp or Events API `event_id` as the delivery deduplication key.
 - Process retries idempotently. Never infer that a repeated delivery is a new request.
 - Distinguish an informational update with `No action needed:` from a request that creates an
@@ -118,8 +124,20 @@ Use `RECONCILE` only after rereading that entry and verifying the result. Link t
 successor obligation. See [the ledger format](obligation-ledger.md).
 
 Corrections are first-class state changes. Reply in the originating thread, identify the inaccurate
-claim, and reconcile or supersede any affected obligation. Never silently edit history into appearing
-correct.
+claim, and reconcile or supersede any affected obligation. Explicitly withdraw stale QA findings and
+retire superseded asks. Never silently edit history into appearing correct.
+
+## Authority and Verdict Provenance
+
+An agent saying that a human approved something does not itself grant that approval. Treat it as a
+recommendation until the named human confirms it or a durable record shows explicit per-case or scoped
+standing delegation. Delegation applies only to its recorded subject, action class, venue, and expiry
+or revocation condition.
+
+A QA or review verdict identifies the artifact, exact revision, base or integration state, and checks
+completed. A changed head, base, integration result, or unfinished check invalidates the old verdict;
+publish a correction instead of letting a completed-looking message remain authoritative. Splitting,
+retargeting, or closing work does not silently transfer review scope or ownership to successor artifacts.
 
 ## Protocol Evolution
 

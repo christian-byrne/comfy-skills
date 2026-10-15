@@ -23,9 +23,11 @@ update obligation ledger -> validate -> send through connector -> persist cursor
 
 ### Polling or Scheduled Loop
 
-Persist the last Slack timestamp locally. On each run, read newer messages, expand only relevant
-threads, and advance the coordination cursor after processing. Respect Slack's `Retry-After` response and do not
-overlap polls. A two-to-five-minute interval is a reasonable trial default, not a protocol rule.
+Persist separate top-level and reply timestamps locally. On each run, read newer roots and independently
+expand relevant threads whose latest reply advanced, plus a bounded trailing-parent window for races.
+Advance cursors only after complete pagination and processing; fail closed on partial or rate-limited
+fetches. Respect Slack's `Retry-After` response and do not overlap polls. A two-to-five-minute interval
+is a reasonable trial default, not a protocol rule.
 
 ### Event Subscription
 
@@ -49,6 +51,11 @@ channel traffic, only mentions plus active threads and obligations, or a broader
 Do not require other participants to add `to:` merely to support that choice. Always honor the
 charter's explicit ignore signal.
 
+Make cadence change-based: run deterministic cursor, obligation, and artifact checks first; do not
+invoke a model or post when nothing material changed. Deep review follows a relevant delta or explicit
+checkpoint. Durable scheduled monitoring needs a liveness receipt and a missing-run alarm; routine
+healthy ticks remain silent.
+
 ## Local State
 
 Each participant owns its state. At minimum retain:
@@ -58,8 +65,10 @@ channel: <Slack channel ID or URL>
 participant: dev-a/frontend
 protocol: agent-collab/v0
 cursors:
-  coordination: <last processed Slack message timestamp or event ID>
-  learning: <last message or reply timestamp reviewed for trial learnings>
+  coordination_roots: <last fully processed top-level timestamp or event ID>
+  coordination_replies: <last fully processed reply timestamp>
+  learning_roots: <last fully reviewed top-level timestamp>
+  learning_replies: <last fully reviewed reply timestamp>
 learning_cursor_audited_at: <timestamp of the completed review>
 active_claims:
   primevue-overlay:
@@ -68,10 +77,9 @@ obligation_ledger: ./agent-collab-obligations.md
 ```
 
 Do not put tokens, private reasoning, or full transcripts in shared messages or portable state.
-The two cursors are independent. Advance `coordination` after an operational message is processed.
-Advance `learning` only after every message and reply through that timestamp has been reviewed and
-any accepted finding is written to the durable learning log. Never advance either cursor past a
-failed or partial fetch.
+Operational and learning cursor families are independent, and roots and replies advance independently
+within each family. Advance a watermark only after its complete fetch and processing; write accepted
+findings before advancing learning state. Never advance any cursor past a failed or partial fetch.
 
 ## Dispatch and Coordinator Boundaries
 
@@ -104,6 +112,10 @@ the operator separately authorizes that behavior.
 Standing human rules need a durable record outside the model context. After compaction, compare the
 summary against that record before resuming. When an auditor raises a valid caveat that cannot change
 the decision, record `caveat accepted; action unchanged` once rather than reopening it indefinitely.
+
+Natural-language steering is valid input. Persist its interpreted scope, consequence, and affected
+work keys before the next wake. A terse option answer is sufficient only when the question supplied
+the options and context; restate the interpretation before acting when ambiguity would be costly.
 
 Invoke the bundled validator with `python3 scripts/validate-message.py`; do not depend on copied files
 retaining their executable bit. Pass `--inherited-context` only for a Slack reply whose parent supplies

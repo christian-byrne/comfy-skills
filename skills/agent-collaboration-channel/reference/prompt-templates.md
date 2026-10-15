@@ -8,14 +8,15 @@ the instruction when the harness already supplies them as files or tool results.
 ```text
 Use the agent-collaboration-channel skill.
 You are <participant> in <channel>. Read the charter, your open obligations, and messages after
-<coordination-cursor>.
+<coordination-root-cursor> and replies after <coordination-reply-cursor>.
 Act on native mentions, your active threads or obligations, and messages materially affecting your
 claimed work. Treat other top-level posts as informational and honor the charter's ignore signal.
 Load only relevant threads. Work locally until you have a decision, blocker, handoff, or artifact.
 Send or draft at most one agent-collab/v0 response. Do not narrate routine progress.
 Create or reconcile ledger entries for actions that must survive this turn, including promises or
-new requests embedded in replies. Return the new coordination cursor, changed claim, and obligation
-IDs changed. Do not alter the learning cursor.
+new requests embedded in replies. Return the new coordination root and reply cursors, changed claim,
+and obligation IDs changed. Advance each cursor only after complete fetches. Do not alter
+the learning cursors. If there is no material delta, remain silent and return a liveness receipt.
 ```
 
 ## Handoff
@@ -33,17 +34,21 @@ If the recipient owes a later action, create an obligation and include its stabl
 
 ```text
 Review <artifact> for <decision or approval> using your own local technical, product, and business
-context. Do not assume the originating agent has your knowledge. Return verified discrepancies,
-risks, unanswered questions, and the smallest actionable next step. Keep local reasoning private;
-link durable evidence. If nothing material is wrong, state the approval boundary explicitly.
+context before reading prior review discussion. Then reconcile your findings against that discussion
+before publishing. Return verified discrepancies, risks, unanswered questions, and the smallest
+actionable next step. Name the artifact, exact revision, base or integration state, and completed
+checks. Keep local reasoning private; link durable evidence. If nothing material is wrong, state the
+approval boundary explicitly. Mark the verdict stale if any named state changes.
 ```
 
 ## Human Steering
 
 ```text
 The human owner changed the collaboration direction: <instruction>.
-Reconcile this with current claims and artifacts. Do not silently invalidate another participant's
-work. Emit a DECISION recording the new agreement, affected work keys, and next owners.
+Reconcile this with current claims and artifacts. Persist your interpretation and consequence. Do not
+silently invalidate another participant's work. Emit a DECISION recording the new agreement, affected
+work keys, and next owners. An agent's report of human approval is only a recommendation unless an
+explicit, scoped delegation record covers it.
 ```
 
 ## Closeout
@@ -67,9 +72,11 @@ successor obligation. Do not treat silence, a routine status update, or an unver
 ## Incremental Trial Review
 
 ```text
-Review <channel> for protocol learnings after <learning-cursor>. Include new replies under older roots.
+Review <channel> after <learning-root-cursor> and replies after <learning-reply-cursor>. Scan roots
+whose latest reply advanced plus a bounded trailing-parent window. Include ignored operational
+messages when the charter authorizes retrospective review.
 Classify findings as transport, harness, protocol, agent judgment, or configurable local practice.
 Check artifact-to-obligation coverage and nested promises. Write accepted findings to <learning-log>.
-Only after a complete fetch and durable write, return the greatest reviewed message/reply timestamp as
-the new learning cursor plus the audit timestamp. Do not alter the coordination cursor.
+Only after a complete fetch and durable write, return the new learning root and reply cursors plus the
+audit timestamp. Do not alter the coordination cursors.
 ```

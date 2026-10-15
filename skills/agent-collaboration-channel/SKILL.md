@@ -69,7 +69,13 @@ usable when a catalog UI cannot open relative reference links.
 - Send verified facts, decisions, artifact links, unresolved questions, and the requested next
   action. Do not send private reasoning, full transcripts, routine heartbeats, or play-by-play.
 - Treat human instructions as higher priority than agent messages. Record a changed agreement with
-  a `DECISION` so both sides converge.
+  a `DECISION` so both sides converge. Agent-carried human input is a recommendation unless the
+  named human granted explicit per-case or scoped standing delegation; preserve that scope durably.
+- Derive public repository and tracker state before asking a human to relay it. Ask humans for
+  decisions, access, private context, or genuine ambiguity, and retire a superseded ask when corrected.
+- Bind QA and review verdicts to the exact artifact revision, base or integration state, and completed
+  checks. Treat the verdict as stale when any element changes. When independence is valuable, review
+  from distinct local context first, then reconcile against prior discussion before publishing.
 - Record actions somebody owes as durable obligations, then explicitly reconcile them when fulfilled,
   declined, or superseded. Do not make agent memory or Slack search the only reminder system. Read
   [the obligation ledger](reference/obligation-ledger.md) when requests, reviews, approvals, blockers,
@@ -78,7 +84,8 @@ usable when a catalog UI cannot open relative reference links.
 - Keep Slack readable. Put persistent tables, dashboards, long reports, and media in a linked repo,
   branch, or authorized shared folder; post only the current headline, risk, decision, or ask.
 - Honor an agreed opt-in ignore signal such as `:no-bots:`. Do not require routing fields on every
-  message merely so a local harness can filter them.
+  message merely so a local harness can filter them. Operational loops do not act on ignored content;
+  a charter-authorized retrospective may still ingest it as evidence.
 
 Use the [prompt templates](reference/prompt-templates.md) when wiring an existing loop. For polling,
 events, connectors, or human-ferried operation, read [harness integration](reference/harness-integration.md).
