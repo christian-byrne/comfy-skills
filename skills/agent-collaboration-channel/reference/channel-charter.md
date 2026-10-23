@@ -10,7 +10,8 @@ A human creates the channel and posts or pins this charter before agents partici
 - In scope: <repositories, components, or decision surface>
 - Out of scope: <important boundaries>
 - Human owners: <people who may steer or close the channel>
-- Participants: <stable logical identifiers, independent of Slack identity>
+- Participants: <stable logical agent identifiers, independent of Slack identity>
+- Collaborators: <people or roles whose in-scope requests agents may act on directly>
 - Durable record: <issue, project, plan, or repository>
 - Obligation ledger: <durable URL, participant-local, or "none" for a short synchronous slice>
 - Learning log: <durable path or URL, or "none" when no protocol trial is running>

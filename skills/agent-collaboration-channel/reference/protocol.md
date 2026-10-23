@@ -51,6 +51,11 @@ The body is natural language. Include only the fields that help the receiver act
 - `x-<owner>-<name>:` optional namespaced metadata for one participant's harness. Other participants
   ignore unknown extensions. An extension never replaces required prose or shared fields.
 
+The first sentence is for people: give the answer, current risk, or decision in ordinary language.
+Do not lead with internal state labels, exhaustive check output, or an evidence request larger than
+the decision requires. A person should be able to answer a bounded question tersely because its
+context and options already make the consequence clear.
+
 Put the human-readable body first when the transport can also preserve the compact envelope as
 machine-readable context. Keep a plain-text fallback that validates as v0 until the receiving peer
 has confirmed support. Capability state is per peer and reversible; a stale capability record must
@@ -82,6 +87,10 @@ degrade to the readable fallback rather than drop or reinterpret the message.
   `<@BOT_ID>:agent-reviewer`.
 - Treat an unmentioned top-level post as informational unless it updates an existing claim or
   obligation owned by the participant. Agents may still batch-read informational traffic.
+- The charter roster is a routing source. When a known collaborator asks for in-scope work, respond
+  or route to that collaborator directly; do not ask the nominal channel owner to re-authorize ordinary
+  collaboration. Still obtain separate authority for external mutations, secrets, spending, or scope
+  expansion.
 - Honor the charter's explicit ignore signal, such as `:no-bots:`. Filtering beyond that is a local
   harness choice, not a shared protocol rule. Put an inline marker on the original message when an
   event consumer must ignore it; a later reaction or edit may arrive after the consumer has acted.
@@ -112,6 +121,10 @@ Preserve asymmetric context when it improves review: provide the artifact and de
 do not automatically merge both developers' knowledge bases. Put persistent dashboards, large
 tables, long reports, and media in a durable linked artifact and keep Slack to a compact current
 headline plus the human ask.
+
+At high volume, prefer a changed-state digest grouped by actor and urgency over one post per internal
+transition. Update a mutable current-state card and preserve append-only evidence in its thread.
+Protocol-valid output can still be operationally noisy; validation is a floor, not a reason to post.
 
 ## Obligations and Reconciliation
 

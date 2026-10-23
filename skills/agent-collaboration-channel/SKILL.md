@@ -1,6 +1,6 @@
 ---
 name: agent-collaboration-channel
-description: 'Accelerate review, approval, adversarial validation, and human steering between developers who run independent agents. Use when collaborators want their distinct local context and agent practices to unblock a shared feature or bounded assistance through a human-readable Slack channel without adopting one orchestrator.'
+description: 'Accelerate review, approval, adversarial validation, and human steering among developers who run independent agents. Use when collaborators want their distinct local context and agent practices to unblock shared work through a human-readable Slack channel without adopting one orchestrator.'
 interaction: hybrid
 type: leaf
 synergies:
@@ -12,7 +12,7 @@ synergies:
 
 # Agent Collaboration Channel
 
-Use a temporary Slack channel as the live review and steering plane between independently operated
+Use a temporary Slack channel as the live review and steering plane among independently operated
 agents. Keep issues, pull requests, and linked Markdown, HTML, or media as the durable record. The
 collaborators' different local knowledge, prompts, skills, and test practices are part of the value.
 This skill defines shared behavior without requiring one bot, scheduler, model, or orchestrator.
@@ -34,7 +34,7 @@ hierarchies, atomic task distribution, concurrency control, or a shared knowledg
 ## Start or Join
 
 1. Require a human-created channel with a charter naming the outcome, scope, human owners,
-   participant identifiers, durable tracker, and close condition. If any field is missing, ask for
+   participant and collaborator roster, durable tracker, and close condition. If any field is missing, ask for
    it before posting. Use [the charter template](reference/channel-charter.md).
 2. Choose one stable logical participant identifier, such as `alex/frontend`. Use it regardless of
    which Slack identity or connector sends the message.
@@ -62,12 +62,18 @@ usable when a catalog UI cannot open relative reference links.
 - Act on messages that mention this participant, continue one of its active threads or obligations,
   or materially affect its claimed work. A message without a mention is informational unless an
   existing thread or obligation already makes the requested actor unambiguous.
+- Route directly to the collaborator who can act. Do not funnel a known collaborator's request or
+  public repository bookkeeping through the channel owner. Escalate for authority, access, conflict,
+  or genuine ambiguity, not as a default relay.
 - Negotiate ownership before editing an overlapping surface. Claims name a checkpoint or expiry.
 - Put new work, decisions, blockers, and completion at the top level. Keep evidence and negotiation
   in the originating thread. Replies may inherit the parent envelope when they do not change its
   work key, participants, ownership, or scope; otherwise repeat the full envelope.
 - Send verified facts, decisions, artifact links, unresolved questions, and the requested next
   action. Do not send private reasoning, full transcripts, routine heartbeats, or play-by-play.
+- Lead with a plain-language answer, current risk, or decision. Put technical proof and machine
+  fields after it or in the thread. When several items compete for attention, rank them by urgency
+  and impact rather than presenting an undifferentiated complete inventory.
 - Treat human instructions as higher priority than agent messages. Record a changed agreement with
   a `DECISION` so both sides converge. Agent-carried human input is a recommendation unless the
   named human granted explicit per-case or scoped standing delegation; preserve that scope durably.
@@ -80,9 +86,15 @@ usable when a catalog UI cannot open relative reference links.
   declined, or superseded. Do not make agent memory or Slack search the only reminder system. Read
   [the obligation ledger](reference/obligation-ledger.md) when requests, reviews, approvals, blockers,
   monitoring promises, or deferred work must survive a turn or context compaction.
+- Keep one active obligation per independently decidable outcome. Merge duplicates, split a card
+  whose parts have different owners or closure tests, and supersede old cards instead of letting
+  several records track the same work.
 - Promote accepted work into the durable tracker or repository. Slack is not the source of truth.
 - Keep Slack readable. Put persistent tables, dashboards, long reports, and media in a linked repo,
   branch, or authorized shared folder; post only the current headline, risk, decision, or ask.
+- Treat high reply volume as a signal to compress, even when every message validates. Group a digest
+  by actor and decision urgency, update existing cards instead of reposting state, and keep evidence
+  in threads. Structured messages do not make a noisy channel readable by themselves.
 - Honor an agreed opt-in ignore signal such as `:no-bots:`. Do not require routing fields on every
   message merely so a local harness can filter them. Operational loops do not act on ignored content;
   a charter-authorized retrospective may still ingest it as evidence.

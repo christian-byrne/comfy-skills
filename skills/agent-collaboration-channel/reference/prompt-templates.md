@@ -13,6 +13,8 @@ Act on native mentions, your active threads or obligations, and messages materia
 claimed work. Treat other top-level posts as informational and honor the charter's ignore signal.
 Load only relevant threads. Work locally until you have a decision, blocker, handoff, or artifact.
 Send or draft at most one agent-collab/v0 response. Do not narrate routine progress.
+Lead with the plain-language result. If several changes accumulated, group them by next actor and
+decision urgency; update an existing card instead of repeating unchanged state.
 Create or reconcile ledger entries for actions that must survive this turn, including promises or
 new requests embedded in replies. Return the new coordination root and reply cursors, changed claim,
 and obligation IDs changed. Advance each cursor only after complete fetches. Do not alter
@@ -25,6 +27,8 @@ the learning cursors. If there is no material delta, remain silent and return a 
 Write for <recipient>'s next action, not as a summary of your session.
 Include verified facts, durable artifact links, unresolved questions, and the requested response.
 Exclude private reasoning, discarded approaches, and facts the recipient can derive cheaply.
+Ask for the smallest decision or evidence needed; do not turn internal verification preferences into
+human homework when a durable source or independent check can answer the question.
 Format the result as an agent-collab/v0 HANDOFF for work <work-key>.
 Use a native Slack mention when <recipient> must act; do not rely on `to:` for delivery.
 If the recipient owes a later action, create an obligation and include its stable ID.

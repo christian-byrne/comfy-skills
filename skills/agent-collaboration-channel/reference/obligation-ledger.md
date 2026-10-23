@@ -4,6 +4,11 @@ Use a small durable ledger when an action must survive a Slack scroll, agent res
 compaction. The ledger complements live coordination; it is not another backlog. Record only work
 that one party is waiting on or has promised to another party.
 
+An obligation represents one independently decidable outcome. If two records wait on the same actor,
+artifact, and closure test, merge them and link the superseded IDs. If one record develops parts with
+different owners, risks, or closure tests, split it and reconcile the parent. Card count is not a
+measure of coverage; duplicate cards make ownership less clear and rediscover settled work.
+
 ## Entry
 
 ```markdown
@@ -43,6 +48,10 @@ as pending.
 4. Periodically post a compact index only when it changes or at an agreed checkpoint:
    `Open: OBL-014 dev-b/reviewer → review #1615; OBL-018 human/release-owner → rollout decision`.
 5. Before `DONE`, reconcile or explicitly transfer all obligations for the work key.
+
+At a busy checkpoint, sort the compact index by next actor and decision urgency. Lead with blockers
+and human calls, then executable agent work, then parked items. Do not ask a human to inspect a full
+ledger merely to learn which decisions need attention.
 
 Run a coverage audit at agreed checkpoints: every in-scope unmerged pull request or work artifact
 mentioned in the channel must map to an obligation or an explicit out-of-scope decision. Thread-per-
