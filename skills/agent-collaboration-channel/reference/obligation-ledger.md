@@ -27,7 +27,8 @@ measure of coverage; duplicate cards make ownership less clear and rediscover se
 ```
 
 Use a stable ID. `Owed by` is the next actor; `Owed to` is who needs the result. The actor may be a
-human, agent, or peer participant. Put enough context in the entry that rereading it restores why the
+human, agent, or peer participant. Name both actors in any message that creates an obligation, even
+when no shared ledger exists. Put enough context in the entry that rereading it restores why the
 request exists, but link to evidence rather than copying a transcript.
 
 Valid statuses are `open`, `parked`, `reconciled`, and `superseded`. A parked entry names a plain-text
@@ -58,7 +59,8 @@ mentioned in the channel must map to an obligation or an explicit out-of-scope d
 obligation is a useful view, not a protocol requirement. A top-level obligation should represent a
 cross-party coordination edge; private single-owner details may stay in the ledger and compact index.
 
-Natural-language promises inside threads still count. Promote “update me in 25 minutes,” a newly
+Natural-language promises inside threads still count. Close out “checking now” in the same thread
+when the check finishes. Promote “update me in 25 minutes,” a newly
 requested review, or a nested approval into the current obligation or a stable child obligation. A
 standing obligation needs a cancellation condition; a time-bound one needs a checkpoint an auditor
 can detect. Human approval or risk acceptance names the human as the next actor rather than replacing
@@ -79,12 +81,22 @@ An optional auditor loop may compare new Slack messages, recent agent output, an
 flag a likely missing or stale entry. It may propose updates, but it must not invent a reconciliation
 or silently assign a human.
 
+## Without a Ledger
+
+If an agent cannot reliably wake up or persist an obligation, it must not promise later action.
+
+- Keep claims short enough to finish in the current turn, then let them lapse.
+- Check first and post the result instead of saying “checking now” when no follow-up is guaranteed.
+- Say that a deferral cannot be tracked instead of implying it will be revisited.
+- Treat the thread reply as the status record and explicitly close it when finished.
+
 ## Good Boundaries
 
 - “FYI, no action needed” is an `UPDATE`, not an obligation.
 - A question needed to proceed creates an obligation on the named respondent.
 - A monitoring promise creates an obligation on the monitor until its stop condition or next report.
 - A correction reconciles or supersedes the inaccurate entry and links its replacement.
-- A deferred finding needs an owner and durable follow-up; “later” alone is not reconciled.
+- Deferring a finding creates a follow-up obligation. It needs an owner and durable wake condition;
+  “later” alone is not reconciled.
 - Evidence expectations are negotiable. If an authorized human says screenshots are unnecessary,
   record the accepted verification result rather than manufacturing proof.

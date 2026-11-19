@@ -54,7 +54,8 @@ charter's explicit ignore signal.
 Make cadence change-based: run deterministic cursor, obligation, and artifact checks first; do not
 invoke a model or post when nothing material changed. Deep review follows a relevant delta or explicit
 checkpoint. Durable scheduled monitoring needs a liveness receipt and a missing-run alarm; routine
-healthy ticks remain silent.
+healthy ticks remain silent. Treat a long silence from expected inputs as a possible feed fault, not
+proof that nothing changed. Record the read-through timestamp in the local liveness receipt.
 
 ## Local State
 

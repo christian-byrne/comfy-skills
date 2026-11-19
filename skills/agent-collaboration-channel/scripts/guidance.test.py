@@ -67,6 +67,14 @@ class GuidanceTest(unittest.TestCase):
         self.assertIn("validation is a floor, not a reason to post", self.protocol)
         self.assertIn("Structured messages do not make a noisy channel", self.skill)
 
+    def test_late_review_conduct_rules_are_preserved(self) -> None:
+        rules = self.protocol.split("## Message Rules")[1].split("\n## ")[0]
+        self.assertIn("Acknowledge with a reaction", rules)
+        self.assertIn("only when a specific human or bot must act", rules)
+        self.assertIn("`Q1`, `Q2`", rules)
+        self.assertIn("## Without a Ledger", self.ledger)
+        self.assertIn("possible feed fault", self.harness)
+
 
 if __name__ == "__main__":
     unittest.main()

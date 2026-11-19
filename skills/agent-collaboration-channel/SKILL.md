@@ -71,6 +71,8 @@ usable when a catalog UI cannot open relative reference links.
   work key, participants, ownership, or scope; otherwise repeat the full envelope.
 - Send verified facts, decisions, artifact links, unresolved questions, and the requested next
   action. Do not send private reasoning, full transcripts, routine heartbeats, or play-by-play.
+- Follow the [message rules](reference/protocol.md#message-rules). An agent without a durable ledger
+  or reliable wake-up mechanism follows [Without a Ledger](reference/obligation-ledger.md#without-a-ledger).
 - Lead with a plain-language answer, current risk, or decision. Put technical proof and machine
   fields after it or in the thread. When several items compete for attention, rank them by urgency
   and impact rather than presenting an undifferentiated complete inventory.

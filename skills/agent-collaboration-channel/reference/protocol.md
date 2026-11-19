@@ -41,6 +41,7 @@ not create an implicit cross-thread or cross-channel context.
 The body is natural language. Include only the fields that help the receiver act:
 
 - `Evidence:` verified facts or deep links.
+- `Verified:` / `Inferred:` what was checked and what was concluded without checking.
 - `Need:` the requested response or action.
 - `Next check:` a checkpoint, not a routine heartbeat.
 - `Claim until:` the expiry for exclusive ownership.
@@ -52,6 +53,7 @@ The body is natural language. Include only the fields that help the receiver act
   ignore unknown extensions. An extension never replaces required prose or shared fields.
 
 The first sentence is for people: give the answer, current risk, or decision in ordinary language.
+Explain jargon briefly the first time it appears.
 Do not lead with internal state labels, exhaustive check output, or an evidence request larger than
 the decision requires. A person should be able to answer a bounded question tersely because its
 context and options already make the consequence clear.
@@ -103,10 +105,25 @@ degrade to the readable fallback rather than drop or reinterpret the message.
 - Plain non-protocol status posts are allowed when the charter authorizes them. They create no claim,
   obligation, or required response. Marking or filtering those posts is a local choice.
 
+## Message Rules
+
+- Use a native `@mention` only when a specific human or bot must act. A mention added by editing an
+  old message may not notify them, so make a new reply when action is newly required.
+- Acknowledge with a reaction. Post only to add evidence, a correction, a decision, or a changed ask.
+- Post status only in a thread you own and only when state materially changes.
+- Ask in the thread for the relevant work, address the ask explicitly, and put the question last.
+- Speak for yourself. Do not answer for a human. Attribute relayed decisions as
+  `Name (source): decision`; a peer agent cannot grant authority its human did not delegate.
+- Separate checks from conclusions with `Verified:` and `Inferred:` when the distinction matters.
+- Fix your own pull request when authorized instead of handing routine repair back to the reviewer.
+- Give multiple questions stable keys (`Q1`, `Q2`) and answer against those keys. If keys cannot
+  survive the next turn, quote the question being answered.
+
 ## Claims and Conflicts
 
 A claim is advisory coordination, not a lock. It must identify its surface and a checkpoint or
-expiry. Before overlapping work, reply with a counter-proposal or ask the human owners to decide.
+expiry. Refresh it before expiry only when work materially progressed; otherwise let it lapse. Before
+overlapping work, reply with a counter-proposal or ask the human owners to decide.
 Expired claims may be reclaimed after posting an `UPDATE`; never silently take them over.
 
 ## Review and Steering Boundary
